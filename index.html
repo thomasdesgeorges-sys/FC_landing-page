@@ -145,7 +145,7 @@
     class="bg-brand-white text-brand-black font-body antialiased overflow-x-hidden selection:bg-brand-terra selection:text-white">
 
     <!-- Navbar -->
-    <nav class="fixed w-full z-50 transition-all duration-300 bg-white/95 backdrop-blur-sm border-b border-gray-100 py-3 md:py-4"
+    <nav class="fixed w-full z-50 transition-all duration-300 bg-white/95 backdrop-blur-sm border-b border-gray-100 py-3 md:py-4 rounded-b-2xl"
         id="navbar">
         <div class="container mx-auto px-4 md:px-6 flex justify-between items-center">
             <div class="flex items-center">
@@ -158,8 +158,8 @@
                 <a href="#rh" class="hover:text-brand-terra transition-colors">Avantages RH</a>
             </div>
             <a href="#contact"
-                class="px-4 py-2 md:px-6 md:py-2 bg-brand-black text-white hover:bg-brand-terra transition-all duration-300 font-bold uppercase text-[10px] md:text-xs tracking-widest rounded-full">
-                Demander un devis
+                class="px-4 py-2 md:px-6 md:py-2 bg-brand-black text-white hover:bg-brand-terra transition-all duration-300 font-subheading font-bold text-[10px] md:text-xs tracking-widest rounded-2xl">
+                Découvrir gratuitement
             </a>
         </div>
     </nav>
@@ -183,7 +183,7 @@
                 <!-- Left: Text Content (5 cols) -->
                 <div class="lg:col-span-5 text-center lg:text-left">
                     <h1
-                        class="font-heading text-3xl md:text-4xl lg:text-5xl leading-[1.1] text-brand-black mb-6 lg:mb-8">
+                        class="font-heading text-3xl md:text-5xl lg:text-6xl leading-[1.1] text-brand-black mb-6 lg:mb-8">
                         Le frigo connecté qui transforme <br>
                         <span class="text-brand-terra">votre pause déj.</span>
                     </h1>
@@ -249,10 +249,9 @@
 
                 <!-- Right: Form (6 cols) -->
                 <div class="lg:col-span-6 w-full" id="contact">
-                    <div
-                        class="bg-white p-6 lg:p-8 rounded-2xl md:rounded-3xl shadow-2xl relative border-4 border-white">
+                    <div class="bg-white p-6 lg:p-8 rounded-2xl shadow-2xl relative border-4 border-white">
                         <div class="mb-6 md:mb-6 text-center">
-                            <h3 class="font-subheading font-bold text-lg lg:text-xl uppercase mb-2">Un expert vous
+                            <h3 class="font-subheading font-bold text-xl lg:text-2xl mb-2">Un expert vous
                                 recontacte dans
                                 la journée</h3>
                             <p class="text-gray-500 font-subheading text-xs lg:text-sm leading-relaxed">Remplissez ce
@@ -266,13 +265,13 @@
                                     <label
                                         class="block text-[10px] font-bold uppercase tracking-widest text-brand-terra mb-1">Nom</label>
                                     <input type="text" placeholder="Dupont"
-                                        class="w-full py-3 px-5 rounded-xl form-input font-subheading text-sm bg-gray-50 border-gray-200 placeholder-gray-400">
+                                        class="w-full py-3 px-5 rounded-2xl form-input font-subheading text-sm bg-gray-50 border-gray-200 placeholder-gray-400">
                                 </div>
                                 <div>
                                     <label
                                         class="block text-[10px] font-bold uppercase tracking-widest text-brand-terra mb-1">Prénom</label>
                                     <input type="text" placeholder="Jean"
-                                        class="w-full py-3 px-5 rounded-xl form-input font-subheading text-sm bg-gray-50 border-gray-200 placeholder-gray-400">
+                                        class="w-full py-3 px-5 rounded-2xl form-input font-subheading text-sm bg-gray-50 border-gray-200 placeholder-gray-400">
                                 </div>
                             </div>
                             <div>
@@ -280,31 +279,31 @@
                                     class="block text-[10px] font-bold uppercase tracking-widest text-brand-terra mb-1">Email
                                     Pro</label>
                                 <input type="email" placeholder="jean@entreprise.com"
-                                    class="w-full py-3 px-5 rounded-xl form-input font-subheading text-sm bg-gray-50 border-gray-200 placeholder-gray-400">
+                                    class="w-full py-3 px-5 rounded-2xl form-input font-subheading text-sm bg-gray-50 border-gray-200 placeholder-gray-400">
                             </div>
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                                 <div>
                                     <label
                                         class="block text-[10px] font-bold uppercase tracking-widest text-brand-terra mb-1">Téléphone</label>
                                     <input type="tel" placeholder="06..."
-                                        class="w-full py-3 px-5 rounded-xl form-input font-subheading text-sm bg-gray-50 border-gray-200 placeholder-gray-400">
+                                        class="w-full py-3 px-5 rounded-2xl form-input font-subheading text-sm bg-gray-50 border-gray-200 placeholder-gray-400">
                                 </div>
                                 <div>
                                     <label
                                         class="block text-[10px] font-bold uppercase tracking-widest text-brand-terra mb-1">Code
                                         Postal</label>
                                     <input type="text" placeholder="75000"
-                                        class="w-full py-3 px-5 rounded-xl form-input font-subheading text-sm bg-gray-50 border-gray-200 placeholder-gray-400">
+                                        class="w-full py-3 px-5 rounded-2xl form-input font-subheading text-sm bg-gray-50 border-gray-200 placeholder-gray-400">
                                 </div>
                             </div>
                             <div>
                                 <label
                                     class="block text-[10px] font-bold uppercase tracking-widest text-brand-terra mb-1">Entreprise</label>
                                 <input type="text" placeholder="Société..."
-                                    class="w-full py-3 px-5 rounded-xl form-input font-subheading text-sm bg-gray-50 border-gray-200 placeholder-gray-400">
+                                    class="w-full py-3 px-5 rounded-2xl form-input font-subheading text-sm bg-gray-50 border-gray-200 placeholder-gray-400">
                             </div>
                             <button type="submit"
-                                class="w-full py-3.5 bg-brand-terra text-white font-heading text-lg uppercase tracking-widest hover:bg-brand-brown transition-colors duration-300 mt-6 rounded-xl shadow-xl shadow-brand-terra/20 hover:shadow-2xl hover:-translate-y-1 transform">
+                                class="w-full py-3.5 bg-brand-terra text-white font-subheading font-bold text-lg tracking-widest hover:bg-brand-brown transition-colors duration-300 mt-6 rounded-2xl shadow-xl shadow-brand-terra/20 hover:shadow-2xl hover:-translate-y-1 transform">
                                 Découvrir gratuitement
                             </button>
                         </form>
@@ -354,9 +353,8 @@
 
                 <!-- Left Column (Sticky) -->
                 <div class="hidden lg:block">
-                    <div class="sticky top-32">
-                        <h2
-                            class="font-heading text-xl md:text-2xl lg:text-3xl uppercase mb-6 leading-none text-brand-black">
+                    <div class="sticky top-32 text-center lg:text-left">
+                        <h2 class="font-heading text-2xl md:text-3xl lg:text-4xl mb-6 leading-none text-brand-black">
                             C'est prêt avant même <br>
                             <span class="text-brand-terra">que vous ayez faim.</span>
                         </h2>
@@ -367,10 +365,9 @@
 
                         <!-- Photo Frigo -->
                         <div
-                            class="relative w-full max-w-sm rounded-3xl overflow-hidden shadow-2xl border-4 border-brand-cream/50 bg-gray-50 aspect-[3/4] mb-10">
+                            class="lg:col-span-7 relative h-[500px] lg:h-[700px] rounded-2xl overflow-hidden shadow-2xl">
                             <img src="assets/img/frigo_connecte.png" alt="Le Frigo Connecté Foodchéri"
                                 class="w-full h-full object-cover transform hover:scale-105 transition-transform duration-700">
-
                             <div
                                 class="absolute bottom-6 left-6 right-6 bg-white/90 backdrop-blur-sm p-4 rounded-xl shadow-lg border border-white/20">
                                 <div class="flex items-center gap-3">
@@ -380,20 +377,14 @@
                                 </div>
                             </div>
                         </div>
-
-                        <!-- CTA -->
-                        <a href="#contact"
-                            class="inline-block px-10 py-4 bg-brand-black text-white font-heading text-lg uppercase tracking-widest rounded-full hover:bg-brand-terra transition-colors shadow-xl">
-                            Découvrir gratuitement
-                        </a>
                     </div>
                 </div>
 
                 <!-- Right Column (Timeline) -->
                 <div class="space-y-16 lg:border-l-2 lg:border-gray-100 lg:pl-12">
                     <!-- Mobile Header -->
-                    <div class="lg:hidden mb-12">
-                        <h2 class="font-heading text-xl md:text-2xl uppercase mb-4 leading-none text-brand-black">
+                    <div class="lg:hidden mb-12 text-center">
+                        <h2 class="font-heading text-2xl md:text-2xl mb-4 leading-none text-brand-black">
                             C'est prêt avant même que vous ayez faim.
                         </h2>
                         <p class="font-roc-medium text-lg text-gray-500">
@@ -410,7 +401,7 @@
                         <div>
                             <span class="text-xs font-bold uppercase tracking-widest text-brand-terra mb-2 block">06h30
                                 | Ça chauffe en cuisine</span>
-                            <h3 class="font-heading text-lg uppercase mb-3 text-brand-black">Nos chefs s'activent...
+                            <h3 class="font-heading text-lg lg:text-2xl mb-3 text-brand-black">Nos chefs s'activent...
                             </h3>
                             <p class="text-gray-600 leading-relaxed">Tout commence à l'aube dans nos cuisines. Produits
                                 frais, recettes de saison, tout est préparé le matin même pour garantir une fraîcheur
@@ -426,7 +417,7 @@
                         <div>
                             <span class="text-xs font-bold uppercase tracking-widest text-brand-terra mb-2 block">10h30
                                 | Ravitaillement stratégique</span>
-                            <h3 class="font-heading text-lg uppercase mb-3 text-brand-black">3 fois par semaine.</h3>
+                            <h3 class="font-heading text-lg lg:text-2xl mb-3 text-brand-black">3 fois par semaine.</h3>
                             <p class="text-gray-600 leading-relaxed">Nos livreurs remplissent votre frigo connecté. Une
                                 rotation constante pour que vous ne mangiez jamais deux fois la même chose (sauf si vous
                                 insistez).</p>
@@ -441,7 +432,8 @@
                         <div>
                             <span class="text-xs font-bold uppercase tracking-widest text-brand-terra mb-2 block">12h00
                                 | Le bip de la délivrance</span>
-                            <h3 class="font-heading text-lg uppercase mb-3 text-brand-black">Déverrouillage instantané.
+                            <h3 class="font-heading text-lg lg:text-2xl mb-3 text-brand-black">Déverrouillage
+                                instantané.
                             </h3>
                             <p class="text-gray-600 leading-relaxed">Le collaborateur badge ou utilise l'appli. La porte
                                 s'ouvre. Il se sert. Nos étagères intelligentes détectent le poids et identifient le
@@ -457,7 +449,7 @@
                         <div>
                             <span class="text-xs font-bold uppercase tracking-widest text-brand-terra mb-2 block">12h02
                                 | Silence, on mange</span>
-                            <h3 class="font-heading text-lg uppercase mb-3 text-brand-black">Vos collaborateurs
+                            <h3 class="font-heading text-lg lg:text-xl mb-3 text-brand-black">Vos collaborateurs
                                 savourent.</h3>
                             <p class="text-gray-600 leading-relaxed">Plus de file d'attente sous la pluie, plus de
                                 sandwich triangle. Juste un bon repas équilibré partagé entre collègues.</p>
@@ -471,7 +463,7 @@
     <!-- 4. The Menu (Infinite Scroll) -->
     <section id="menu" class="py-24 bg-brand-cream overflow-hidden">
         <div class="container mx-auto px-4 md:px-6 mb-12 text-center">
-            <h2 class="font-heading text-xl md:text-2xl lg:text-3xl uppercase mb-4 text-brand-black">Enfin une bonne
+            <h2 class="font-heading text-2xl md:text-3xl lg:text-4xl mb-4 text-brand-black">Enfin une bonne
                 raison <br>de rester au bureau.</h2>
             <p class="font-subheading text-brand-terra uppercase tracking-widest">Plus de 2000 recettes variées...</p>
         </div>
@@ -483,14 +475,14 @@
                     <!-- Card 1 -->
                     <div
                         class="w-[300px] shrink-0 bg-white rounded-2xl p-4 shadow-lg hover:-translate-y-2 transition-transform duration-300">
-                        <div class="h-48 overflow-hidden rounded-xl mb-4 bg-gray-100 relative">
+                        <div class="h-48 overflow-hidden rounded-2xl mb-4 bg-gray-100 relative">
                             <img src="assets/img/menu_selection/aiguillettes-vegetales.jpg"
                                 class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-700"
                                 alt="Aiguillettes">
                             <span
                                 class="absolute top-2 right-2 bg-white px-3 py-1 text-[10px] font-bold uppercase tracking-widest rounded-full text-brand-black">Végé</span>
                         </div>
-                        <h3 class="font-heading text-base uppercase mb-1 text-brand-black">Aiguillettes Végétales</h3>
+                        <h3 class="font-heading text-base mb-1 text-brand-black">Aiguillettes Végétales</h3>
                         <p class="text-xs text-gray-500">Tomates braisées & pommes de terre</p>
                     </div>
                     <!-- Card 2 -->
@@ -503,7 +495,7 @@
                             <span
                                 class="absolute top-2 right-2 bg-white px-3 py-1 text-[10px] font-bold uppercase tracking-widest rounded-full text-brand-black">Healthy</span>
                         </div>
-                        <h3 class="font-heading text-base uppercase mb-1 text-brand-black">Pink Bowl</h3>
+                        <h3 class="font-heading text-base mb-1 text-brand-black">Pink Bowl</h3>
                         <p class="text-xs text-gray-500">Explosion de couleurs & vitamines</p>
                     </div>
                     <!-- Card 3 -->
@@ -516,7 +508,7 @@
                             <span
                                 class="absolute top-2 right-2 bg-white px-3 py-1 text-[10px] font-bold uppercase tracking-widest rounded-full text-brand-black">Mer</span>
                         </div>
-                        <h3 class="font-heading text-base uppercase mb-1 text-brand-black">Linguine Saumon</h3>
+                        <h3 class="font-heading text-base mb-1 text-brand-black">Linguine Saumon</h3>
                         <p class="text-xs text-gray-500">Épinards frais & crème onctueuse</p>
                     </div>
                     <!-- Card 4 -->
@@ -529,7 +521,7 @@
                             <span
                                 class="absolute top-2 right-2 bg-white px-3 py-1 text-[10px] font-bold uppercase tracking-widest rounded-full text-brand-black">Monde</span>
                         </div>
-                        <h3 class="font-heading text-base uppercase mb-1 text-brand-black">Porc à l'Ananas</h3>
+                        <h3 class="font-heading text-base mb-1 text-brand-black">Porc à l'Ananas</h3>
                         <p class="text-xs text-gray-500">Sucré-salé & riz parfumé</p>
                     </div>
                     <!-- Card 5 -->
@@ -542,7 +534,7 @@
                             <span
                                 class="absolute top-2 right-2 bg-white px-3 py-1 text-[10px] font-bold uppercase tracking-widest rounded-full text-brand-black">Monde</span>
                         </div>
-                        <h3 class="font-heading text-base uppercase mb-1 text-brand-black">Chili Con Carne</h3>
+                        <h3 class="font-heading text-base mb-1 text-brand-black">Chili Con Carne</h3>
                         <p class="text-xs text-gray-500">Haricots rouges mijotés & épices</p>
                     </div>
                     <!-- Card 6 -->
@@ -555,7 +547,7 @@
                             <span
                                 class="absolute top-2 right-2 bg-white px-3 py-1 text-[10px] font-bold uppercase tracking-widest rounded-full text-brand-black">Végé</span>
                         </div>
-                        <h3 class="font-heading text-base uppercase mb-1 text-brand-black">Green Curry Végétal</h3>
+                        <h3 class="font-heading text-base mb-1 text-brand-black">Green Curry Végétal</h3>
                         <p class="text-xs text-gray-500">Lait de coco, citronnelle & légumes</p>
                     </div>
                     <!-- Card 7 -->
@@ -568,7 +560,7 @@
                             <span
                                 class="absolute top-2 right-2 bg-white px-3 py-1 text-[10px] font-bold uppercase tracking-widest rounded-full text-brand-black">Dessert</span>
                         </div>
-                        <h3 class="font-heading text-base uppercase mb-1 text-brand-black">Mousse Marrons</h3>
+                        <h3 class="font-heading text-base mb-1 text-brand-black">Mousse Marrons</h3>
                         <p class="text-xs text-gray-500">La douceur du Mont-Blanc</p>
                     </div>
                     <!-- Card 8 -->
@@ -581,7 +573,7 @@
                             <span
                                 class="absolute top-2 right-2 bg-white px-3 py-1 text-[10px] font-bold uppercase tracking-widest rounded-full text-brand-black">Monde</span>
                         </div>
-                        <h3 class="font-heading text-base uppercase mb-1 text-brand-black">Poulet Teriyaki</h3>
+                        <h3 class="font-heading text-base mb-1 text-brand-black">Poulet Teriyaki</h3>
                         <p class="text-xs text-gray-500">Sauce soja caramélisée & riz sauté</p>
                     </div>
                     <!-- Card 9 -->
@@ -594,7 +586,7 @@
                             <span
                                 class="absolute top-2 right-2 bg-white px-3 py-1 text-[10px] font-bold uppercase tracking-widest rounded-full text-brand-black">Healthy</span>
                         </div>
-                        <h3 class="font-heading text-base uppercase mb-1 text-brand-black">Salade Quinoa Coco</h3>
+                        <h3 class="font-heading text-base mb-1 text-brand-black">Salade Quinoa Coco</h3>
                         <p class="text-xs text-gray-500">Poulet mariné & fraîcheur exotique</p>
                     </div>
                     <!-- Card 10 -->
@@ -607,7 +599,7 @@
                             <span
                                 class="absolute top-2 right-2 bg-white px-3 py-1 text-[10px] font-bold uppercase tracking-widest rounded-full text-brand-black">Végé</span>
                         </div>
-                        <h3 class="font-heading text-base uppercase mb-1 text-brand-black">Risotto Potimarron</h3>
+                        <h3 class="font-heading text-base mb-1 text-brand-black">Risotto Potimarron</h3>
                         <p class="text-xs text-gray-500">Champignons des bois & crémeux végétal</p>
                     </div>
                 </div>
@@ -624,7 +616,7 @@
                             <span
                                 class="absolute top-2 right-2 bg-white px-3 py-1 text-[10px] font-bold uppercase tracking-widest rounded-full text-brand-black">Végé</span>
                         </div>
-                        <h3 class="font-heading text-xl uppercase mb-1 text-brand-black">Aiguillettes Végétales</h3>
+                        <h3 class="font-heading text-xl mb-1 text-brand-black">Aiguillettes Végétales</h3>
                         <p class="text-xs text-gray-500">Tomates braisées & pommes de terre</p>
                     </div>
                     <!-- Card 2 -->
@@ -637,7 +629,7 @@
                             <span
                                 class="absolute top-2 right-2 bg-white px-3 py-1 text-[10px] font-bold uppercase tracking-widest rounded-full text-brand-black">Healthy</span>
                         </div>
-                        <h3 class="font-heading text-xl uppercase mb-1 text-brand-black">Pink Bowl</h3>
+                        <h3 class="font-heading text-xl mb-1 text-brand-black">Pink Bowl</h3>
                         <p class="text-xs text-gray-500">Explosion de couleurs & vitamines</p>
                     </div>
                     <!-- Card 3 -->
@@ -650,7 +642,7 @@
                             <span
                                 class="absolute top-2 right-2 bg-white px-3 py-1 text-[10px] font-bold uppercase tracking-widest rounded-full text-brand-black">Mer</span>
                         </div>
-                        <h3 class="font-heading text-xl uppercase mb-1 text-brand-black">Linguine Saumon</h3>
+                        <h3 class="font-heading text-xl mb-1 text-brand-black">Linguine Saumon</h3>
                         <p class="text-xs text-gray-500">Épinards frais & crème onctueuse</p>
                     </div>
                     <!-- Card 4 -->
@@ -663,7 +655,7 @@
                             <span
                                 class="absolute top-2 right-2 bg-white px-3 py-1 text-[10px] font-bold uppercase tracking-widest rounded-full text-brand-black">Monde</span>
                         </div>
-                        <h3 class="font-heading text-xl uppercase mb-1 text-brand-black">Porc à l'Ananas</h3>
+                        <h3 class="font-heading text-xl mb-1 text-brand-black">Porc à l'Ananas</h3>
                         <p class="text-xs text-gray-500">Sucré-salé & riz parfumé</p>
                     </div>
                     <!-- Card 5 -->
@@ -676,7 +668,7 @@
                             <span
                                 class="absolute top-2 right-2 bg-white px-3 py-1 text-[10px] font-bold uppercase tracking-widest rounded-full text-brand-black">Monde</span>
                         </div>
-                        <h3 class="font-heading text-xl uppercase mb-1 text-brand-black">Chili Con Carne</h3>
+                        <h3 class="font-heading text-xl mb-1 text-brand-black">Chili Con Carne</h3>
                         <p class="text-xs text-gray-500">Haricots rouges mijotés & épices</p>
                     </div>
                     <!-- Card 6 -->
@@ -689,7 +681,7 @@
                             <span
                                 class="absolute top-2 right-2 bg-white px-3 py-1 text-[10px] font-bold uppercase tracking-widest rounded-full text-brand-black">Végé</span>
                         </div>
-                        <h3 class="font-heading text-xl uppercase mb-1 text-brand-black">Green Curry Végétal</h3>
+                        <h3 class="font-heading text-xl mb-1 text-brand-black">Green Curry Végétal</h3>
                         <p class="text-xs text-gray-500">Lait de coco, citronnelle & légumes</p>
                     </div>
                     <!-- Card 7 -->
@@ -702,7 +694,7 @@
                             <span
                                 class="absolute top-2 right-2 bg-white px-3 py-1 text-[10px] font-bold uppercase tracking-widest rounded-full text-brand-black">Dessert</span>
                         </div>
-                        <h3 class="font-heading text-xl uppercase mb-1 text-brand-black">Mousse Marrons</h3>
+                        <h3 class="font-heading text-xl mb-1 text-brand-black">Mousse Marrons</h3>
                         <p class="text-xs text-gray-500">La douceur du Mont-Blanc</p>
                     </div>
                     <!-- Card 8 -->
@@ -715,7 +707,7 @@
                             <span
                                 class="absolute top-2 right-2 bg-white px-3 py-1 text-[10px] font-bold uppercase tracking-widest rounded-full text-brand-black">Monde</span>
                         </div>
-                        <h3 class="font-heading text-xl uppercase mb-1 text-brand-black">Poulet Teriyaki</h3>
+                        <h3 class="font-heading text-xl mb-1 text-brand-black">Poulet Teriyaki</h3>
                         <p class="text-xs text-gray-500">Sauce soja caramélisée & riz sauté</p>
                     </div>
                     <!-- Card 9 -->
@@ -755,8 +747,8 @@
             <div class="flex flex-col md:flex-row items-center gap-12 lg:gap-20">
 
                 <!-- Left: Content -->
-                <div class="md:w-1/2 space-y-8">
-                    <h2 class="font-heading text-xl md:text-2xl lg:text-3xl uppercase leading-none text-brand-black">
+                <div class="md:w-1/2 space-y-8 text-center md:text-left">
+                    <h2 class="font-heading text-2xl md:text-3xl lg:text-4xl leading-none text-brand-black">
                         Vos collaborateurs méritent mieux <br>
                         <span class="text-brand-terra">qu'un sandwich triangle.</span>
                     </h2>
@@ -793,16 +785,16 @@
                     </ul>
 
                     <a href="#contact"
-                        class="inline-block mt-8 px-10 py-4 bg-white text-brand-black border-2 border-brand-black font-heading text-lg uppercase tracking-widest rounded-full hover:bg-brand-black hover:text-white transition-all duration-300">
+                        class="inline-block mt-8 px-10 py-4 bg-brand-black text-white font-subheading font-bold text-lg tracking-widest rounded-2xl hover:bg-brand-terra transition-all duration-300 transform hover:-translate-y-1">
                         Découvrir gratuitement
                     </a>
                 </div>
 
                 <!-- Right: Lifestyle Photo -->
                 <div class="md:w-1/2 w-full">
-                    <div class="relative p-6 bg-brand-beige rounded-tl-[100px] rounded-br-[100px]">
+                    <div class="relative p-6 bg-brand-beige rounded-2xl">
                         <img src="assets/img/food-repas-assiette.jpg" alt="Happy Colleagues"
-                            class="w-full h-[500px] object-cover rounded-tl-[80px] rounded-br-[80px]">
+                            class="w-full h-[500px] object-cover rounded-2xl">
                     </div>
                 </div>
             </div>
