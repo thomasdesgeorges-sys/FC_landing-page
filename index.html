@@ -258,19 +258,18 @@
                                 formulaire pour recevoir votre étude personnalisée.</p>
                         </div>
 
-                        <form class="space-y-4"
-                            onsubmit="event.preventDefault(); alert('Merci ! Votre demande a bien été reçue.');">
+                        <form class="space-y-4" name="contact-site" method="POST" data-netlify="true">
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                                 <div>
                                     <label
                                         class="block text-[10px] font-bold uppercase tracking-widest text-brand-terra mb-1">Nom</label>
-                                    <input type="text" placeholder="Dupont"
+                                    <input type="text" name="nom" placeholder="Dupont"
                                         class="w-full py-3 px-5 rounded-2xl form-input font-subheading text-sm bg-gray-50 border-gray-200 placeholder-gray-400">
                                 </div>
                                 <div>
                                     <label
                                         class="block text-[10px] font-bold uppercase tracking-widest text-brand-terra mb-1">Prénom</label>
-                                    <input type="text" placeholder="Jean"
+                                    <input type="text" name="prenom" placeholder="Jean"
                                         class="w-full py-3 px-5 rounded-2xl form-input font-subheading text-sm bg-gray-50 border-gray-200 placeholder-gray-400">
                                 </div>
                             </div>
@@ -278,28 +277,28 @@
                                 <label
                                     class="block text-[10px] font-bold uppercase tracking-widest text-brand-terra mb-1">Email
                                     Pro</label>
-                                <input type="email" placeholder="jean@entreprise.com"
+                                <input type="email" name="email" placeholder="jean@entreprise.com"
                                     class="w-full py-3 px-5 rounded-2xl form-input font-subheading text-sm bg-gray-50 border-gray-200 placeholder-gray-400">
                             </div>
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                                 <div>
                                     <label
                                         class="block text-[10px] font-bold uppercase tracking-widest text-brand-terra mb-1">Téléphone</label>
-                                    <input type="tel" placeholder="06..."
+                                    <input type="tel" name="telephone" placeholder="06..."
                                         class="w-full py-3 px-5 rounded-2xl form-input font-subheading text-sm bg-gray-50 border-gray-200 placeholder-gray-400">
                                 </div>
                                 <div>
                                     <label
                                         class="block text-[10px] font-bold uppercase tracking-widest text-brand-terra mb-1">Code
                                         Postal</label>
-                                    <input type="text" placeholder="75000"
+                                    <input type="text" name="codepostal" placeholder="75000"
                                         class="w-full py-3 px-5 rounded-2xl form-input font-subheading text-sm bg-gray-50 border-gray-200 placeholder-gray-400">
                                 </div>
                             </div>
                             <div>
                                 <label
                                     class="block text-[10px] font-bold uppercase tracking-widest text-brand-terra mb-1">Entreprise</label>
-                                <input type="text" placeholder="Société..."
+                                <input type="text" name="entreprise" placeholder="Société..."
                                     class="w-full py-3 px-5 rounded-2xl form-input font-subheading text-sm bg-gray-50 border-gray-200 placeholder-gray-400">
                             </div>
                             <button type="submit"
