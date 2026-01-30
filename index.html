@@ -192,22 +192,31 @@
                     <ul class="space-y-4 max-w-md mx-auto lg:mx-0 font-roc-medium text-lg text-brand-black/80">
                         <li class="flex items-center gap-4 justify-center lg:justify-start">
                             <div
-                                class="w-6 h-6 rounded border-2 border-brand-terra flex items-center justify-center shrink-0 bg-brand-terra">
-                                <i data-lucide="check" class="text-white w-4 h-4"></i>
+                                class="w-6 h-6 rounded border-2 border-brand-terra flex items-center justify-center shrink-0">
+                                <svg class="w-4 h-4 text-brand-terra" fill="none" stroke="currentColor" stroke-width="3"
+                                    viewBox="0 0 24 24">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
                             </div>
                             Des plats frais, cuisinés par nos chef.fes
                         </li>
                         <li class="flex items-center gap-4 justify-center lg:justify-start">
                             <div
-                                class="w-6 h-6 rounded border-2 border-brand-terra flex items-center justify-center shrink-0 bg-brand-terra">
-                                <i data-lucide="check" class="text-white w-4 h-4"></i>
+                                class="w-6 h-6 rounded border-2 border-brand-terra flex items-center justify-center shrink-0">
+                                <svg class="w-4 h-4 text-brand-terra" fill="none" stroke="currentColor" stroke-width="3"
+                                    viewBox="0 0 24 24">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
                             </div>
                             Adapté aux petits espaces
                         </li>
                         <li class="flex items-center gap-4 justify-center lg:justify-start">
                             <div
-                                class="w-6 h-6 rounded border-2 border-brand-terra flex items-center justify-center shrink-0 bg-brand-terra">
-                                <i data-lucide="check" class="text-white w-4 h-4"></i>
+                                class="w-6 h-6 rounded border-2 border-brand-terra flex items-center justify-center shrink-0">
+                                <svg class="w-4 h-4 text-brand-terra" fill="none" stroke="currentColor" stroke-width="3"
+                                    viewBox="0 0 24 24">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
                             </div>
                             Disponibles 24h/24, 7j/7
                         </li>
@@ -296,11 +305,31 @@
                                         class="w-full py-3 px-5 rounded-2xl form-input font-subheading text-sm bg-gray-50 border-gray-200 placeholder-gray-400">
                                 </div>
                             </div>
-                            <div>
-                                <label
-                                    class="block text-[10px] font-bold uppercase tracking-widest text-brand-terra mb-1">Entreprise</label>
-                                <input type="text" name="entreprise" placeholder="Société..." required
-                                    class="w-full py-3 px-5 rounded-2xl form-input font-subheading text-sm bg-gray-50 border-gray-200 placeholder-gray-400">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <label
+                                        class="block text-[10px] font-bold uppercase tracking-widest text-brand-terra mb-1">Entreprise</label>
+                                    <input type="text" name="entreprise" placeholder="Société..." required
+                                        class="w-full py-3 px-5 rounded-2xl form-input font-subheading text-sm bg-gray-50 border-gray-200 placeholder-gray-400">
+                                </div>
+                                <div>
+                                    <label
+                                        class="block text-[10px] font-bold uppercase tracking-widest text-brand-terra mb-1">Nombre
+                                        d'employés</label>
+                                    <select name="nombre_employes" required
+                                        class="w-full py-3 px-5 rounded-2xl form-input font-subheading text-sm bg-gray-50 border-gray-200 text-gray-700">
+                                        <option value="" disabled selected>Sélectionnez...</option>
+                                        <option value="1">1</option>
+                                        <option value="2-10">2-10</option>
+                                        <option value="11-50">11-50</option>
+                                        <option value="51-100">51-100</option>
+                                        <option value="101-200">101-200</option>
+                                        <option value="201-500">201-500</option>
+                                        <option value="501-1000">501-1000</option>
+                                        <option value="1001-5000">1001-5000</option>
+                                        <option value="5001+">5001+</option>
+                                    </select>
+                                </div>
                             </div>
 
                             <!-- Success Message (Hidden by default) -->
@@ -308,8 +337,11 @@
                                 <div class="bg-brand-cream border-2 border-brand-terra rounded-2xl p-6 text-center">
                                     <div class="flex justify-center mb-3">
                                         <div
-                                            class="w-8 h-8 border-2 border-brand-terra rounded flex items-center justify-center bg-brand-terra">
-                                            <i data-lucide="check" class="w-5 h-5 text-white stroke-[3]"></i>
+                                            class="w-8 h-8 border-2 border-brand-terra rounded flex items-center justify-center">
+                                            <svg class="w-5 h-5 text-brand-terra" fill="none" stroke="currentColor"
+                                                stroke-width="3" viewBox="0 0 24 24">
+                                                <polyline points="20 6 9 17 4 12"></polyline>
+                                            </svg>
                                         </div>
                                     </div>
                                     <h4 class="font-subheading font-bold text-lg text-brand-black mb-2">Merci !</h4>
