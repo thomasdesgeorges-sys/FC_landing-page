@@ -258,18 +258,18 @@
                                 formulaire pour recevoir votre étude personnalisée.</p>
                         </div>
 
-                        <form class="space-y-4" name="contact-site" method="POST" data-netlify="true">
+                        <form class="space-y-4" id="contact-form" name="contact-site" method="POST" data-netlify="true">
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                                 <div>
                                     <label
                                         class="block text-[10px] font-bold uppercase tracking-widest text-brand-terra mb-1">Nom</label>
-                                    <input type="text" name="nom" placeholder="Dupont"
+                                    <input type="text" name="nom" placeholder="Dupont" required
                                         class="w-full py-3 px-5 rounded-2xl form-input font-subheading text-sm bg-gray-50 border-gray-200 placeholder-gray-400">
                                 </div>
                                 <div>
                                     <label
                                         class="block text-[10px] font-bold uppercase tracking-widest text-brand-terra mb-1">Prénom</label>
-                                    <input type="text" name="prenom" placeholder="Jean"
+                                    <input type="text" name="prenom" placeholder="Jean" required
                                         class="w-full py-3 px-5 rounded-2xl form-input font-subheading text-sm bg-gray-50 border-gray-200 placeholder-gray-400">
                                 </div>
                             </div>
@@ -277,31 +277,47 @@
                                 <label
                                     class="block text-[10px] font-bold uppercase tracking-widest text-brand-terra mb-1">Email
                                     Pro</label>
-                                <input type="email" name="email" placeholder="jean@entreprise.com"
+                                <input type="email" name="email" placeholder="jean@entreprise.com" required
                                     class="w-full py-3 px-5 rounded-2xl form-input font-subheading text-sm bg-gray-50 border-gray-200 placeholder-gray-400">
                             </div>
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                                 <div>
                                     <label
                                         class="block text-[10px] font-bold uppercase tracking-widest text-brand-terra mb-1">Téléphone</label>
-                                    <input type="tel" name="telephone" placeholder="06..."
+                                    <input type="tel" name="telephone" placeholder="06..." required
                                         class="w-full py-3 px-5 rounded-2xl form-input font-subheading text-sm bg-gray-50 border-gray-200 placeholder-gray-400">
                                 </div>
                                 <div>
                                     <label
                                         class="block text-[10px] font-bold uppercase tracking-widest text-brand-terra mb-1">Code
                                         Postal</label>
-                                    <input type="text" name="codepostal" placeholder="75000"
+                                    <input type="text" name="codepostal" placeholder="75000" required
                                         class="w-full py-3 px-5 rounded-2xl form-input font-subheading text-sm bg-gray-50 border-gray-200 placeholder-gray-400">
                                 </div>
                             </div>
                             <div>
                                 <label
                                     class="block text-[10px] font-bold uppercase tracking-widest text-brand-terra mb-1">Entreprise</label>
-                                <input type="text" name="entreprise" placeholder="Société..."
+                                <input type="text" name="entreprise" placeholder="Société..." required
                                     class="w-full py-3 px-5 rounded-2xl form-input font-subheading text-sm bg-gray-50 border-gray-200 placeholder-gray-400">
                             </div>
-                            <button type="submit"
+
+                            <!-- Success Message (Hidden by default) -->
+                            <div id="success-message" class="hidden">
+                                <div class="bg-brand-cream border-2 border-brand-terra rounded-2xl p-6 text-center">
+                                    <div class="flex justify-center mb-3">
+                                        <div
+                                            class="w-12 h-12 bg-brand-terra rounded-full flex items-center justify-center">
+                                            <i data-lucide="check" class="w-6 h-6 text-white"></i>
+                                        </div>
+                                    </div>
+                                    <h4 class="font-subheading font-bold text-lg text-brand-black mb-2">Merci !</h4>
+                                    <p class="font-subheading text-sm text-gray-600">Votre demande a bien été
+                                        reçue.<br>Un expert vous recontacte dans la journée.</p>
+                                </div>
+                            </div>
+
+                            <button type="submit" id="submit-btn"
                                 class="w-full py-3.5 bg-brand-terra text-white font-subheading font-bold text-lg tracking-widest hover:bg-brand-brown transition-colors duration-300 mt-6 rounded-2xl shadow-xl shadow-brand-terra/20 hover:shadow-2xl hover:-translate-y-1 transform">
                                 Découvrir gratuitement
                             </button>
@@ -837,6 +853,57 @@
             document.querySelectorAll('.reveal').forEach(section => {
                 observer.observe(section);
             });
+
+            // Form submission handling
+            const form = document.getElementById('contact-form');
+            const submitBtn = document.getElementById('submit-btn');
+            const successMessage = document.getElementById('success-message');
+
+            if (form) {
+                form.addEventListener('submit', function (e) {
+                    e.preventDefault();
+
+                    // Change button text to loading state
+                    const originalText = submitBtn.innerHTML;
+                    submitBtn.innerHTML = 'Envoi en cours...';
+                    submitBtn.disabled = true;
+
+                    // Prepare form data
+                    const formData = new FormData(form);
+
+                    // Submit to Netlify
+                    fetch('/', {
+                        method: 'POST',
+                        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                        body: new URLSearchParams(formData).toString()
+                    })
+                        .then(() => {
+                            // Hide form fields
+                            form.querySelectorAll('input, label, button').forEach(el => {
+                                el.style.display = 'none';
+                            });
+
+                            // Show success message with animation
+                            successMessage.classList.remove('hidden');
+                            successMessage.style.opacity = '0';
+                            setTimeout(() => {
+                                successMessage.style.transition = 'opacity 0.5s ease-in-out';
+                                successMessage.style.opacity = '1';
+                            }, 10);
+
+                            // Re-initialize Lucide icons for the success message
+                            if (typeof lucide !== 'undefined') {
+                                lucide.createIcons();
+                            }
+                        })
+                        .catch((error) => {
+                            // Reset button on error
+                            submitBtn.innerHTML = originalText;
+                            submitBtn.disabled = false;
+                            alert('Une erreur est survenue. Veuillez réessayer.');
+                        });
+                });
+            }
         });
     </script>
 </body>
