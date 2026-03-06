@@ -313,15 +313,7 @@
                                 <div class="relative">
                                     <input type="email" id="email-input" name="email" placeholder="jean@entreprise.com"
                                         required
-                                        class="w-full py-3 px-5 rounded-2xl form-input font-subheading text-sm bg-gray-50 border-gray-200 placeholder-gray-400 pr-10">
-                                    <div id="email-check"
-                                        class="absolute right-3 top-1/2 -translate-y-1/2 text-green-500 hidden">
-                                        <i data-lucide="check-circle" class="w-5 h-5"></i>
-                                    </div>
-                                    <div id="email-error"
-                                        class="absolute right-3 top-1/2 -translate-y-1/2 text-red-400 hidden">
-                                        <i data-lucide="x-circle" class="w-5 h-5"></i>
-                                    </div>
+                                        class="w-full py-3 px-5 rounded-2xl form-input font-subheading text-sm bg-gray-50 border-gray-200 placeholder-gray-400 transition-colors duration-300">
                                 </div>
                             </div>
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -330,15 +322,7 @@
                                         class="block text-[10px] font-bold uppercase tracking-widest text-brand-terra mb-1">Téléphone</label>
                                     <div class="relative">
                                         <input type="tel" id="phone-input" name="telephone" placeholder="06..." required
-                                            class="w-full py-3 px-5 rounded-2xl form-input font-subheading text-sm bg-gray-50 border-gray-200 placeholder-gray-400 pr-10">
-                                        <div id="phone-check"
-                                            class="absolute right-3 top-1/2 -translate-y-1/2 text-green-500 hidden">
-                                            <i data-lucide="check-circle" class="w-5 h-5"></i>
-                                        </div>
-                                        <div id="phone-error"
-                                            class="absolute right-3 top-1/2 -translate-y-1/2 text-red-400 hidden">
-                                            <i data-lucide="x-circle" class="w-5 h-5"></i>
-                                        </div>
+                                            class="w-full py-3 px-5 rounded-2xl form-input font-subheading text-sm bg-gray-50 border-gray-200 placeholder-gray-400 transition-colors duration-300">
                                     </div>
                                 </div>
                                 <div>
@@ -959,16 +943,16 @@
             if (emailInput) {
                 emailInput.addEventListener('input', function () {
                     if (this.value === '') {
-                        emailCheck.classList.add('hidden');
-                        emailError.classList.add('hidden');
+                        emailInput.classList.remove('border-red-300', 'bg-red-50', 'text-red-900', 'focus:border-red-500', 'focus:ring-red-500', 'border-green-300', 'bg-green-50', 'text-green-900', 'focus:border-green-500', 'focus:ring-green-500');
+                        emailInput.classList.add('bg-gray-50', 'border-gray-200');
                         emailInput.setCustomValidity('');
                     } else if (validateEmail(this.value)) {
-                        emailCheck.classList.remove('hidden');
-                        emailError.classList.add('hidden');
+                        emailInput.classList.remove('border-red-300', 'bg-red-50', 'text-red-900', 'focus:border-red-500', 'focus:ring-red-500', 'bg-gray-50', 'border-gray-200');
+                        emailInput.classList.add('border-green-300', 'bg-green-50', 'text-green-900', 'focus:border-green-500', 'focus:ring-green-500');
                         emailInput.setCustomValidity('');
                     } else {
-                        emailCheck.classList.add('hidden');
-                        emailError.classList.remove('hidden');
+                        emailInput.classList.remove('border-green-300', 'bg-green-50', 'text-green-900', 'focus:border-green-500', 'focus:ring-green-500', 'bg-gray-50', 'border-gray-200');
+                        emailInput.classList.add('border-red-300', 'bg-red-50', 'text-red-900', 'focus:border-red-500', 'focus:ring-red-500');
                         emailInput.setCustomValidity('Veuillez entrer une adresse e-mail valide.');
                     }
                 });
@@ -977,16 +961,16 @@
             if (phoneInput) {
                 phoneInput.addEventListener('input', function () {
                     if (this.value === '') {
-                        phoneCheck.classList.add('hidden');
-                        phoneError.classList.add('hidden');
+                        phoneInput.classList.remove('border-red-300', 'bg-red-50', 'text-red-900', 'focus:border-red-500', 'focus:ring-red-500', 'border-green-300', 'bg-green-50', 'text-green-900', 'focus:border-green-500', 'focus:ring-green-500');
+                        phoneInput.classList.add('bg-gray-50', 'border-gray-200');
                         phoneInput.setCustomValidity('');
                     } else if (validatePhone(this.value)) {
-                        phoneCheck.classList.remove('hidden');
-                        phoneError.classList.add('hidden');
+                        phoneInput.classList.remove('border-red-300', 'bg-red-50', 'text-red-900', 'focus:border-red-500', 'focus:ring-red-500', 'bg-gray-50', 'border-gray-200');
+                        phoneInput.classList.add('border-green-300', 'bg-green-50', 'text-green-900', 'focus:border-green-500', 'focus:ring-green-500');
                         phoneInput.setCustomValidity('');
                     } else {
-                        phoneCheck.classList.add('hidden');
-                        phoneError.classList.remove('hidden');
+                        phoneInput.classList.remove('border-green-300', 'bg-green-50', 'text-green-900', 'focus:border-green-500', 'focus:ring-green-500', 'bg-gray-50', 'border-gray-200');
+                        phoneInput.classList.add('border-red-300', 'bg-red-50', 'text-red-900', 'focus:border-red-500', 'focus:ring-red-500');
                         phoneInput.setCustomValidity('Veuillez entrer un numéro de téléphone valide (10 chiffres).');
                     }
                 });
