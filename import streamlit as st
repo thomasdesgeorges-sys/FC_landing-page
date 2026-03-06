@@ -1,0 +1,149 @@
+import streamlit as st
+import google.generativeai as genai
+import pandas as pd
+import time
+import json
+
+# --- CONFIGURATION DE LA PAGE ---
+st.set_page_config(page_title="GEO Tracker - Interne", layout="wide")
+
+# --- FONCTIONS ---
+
+def analyze_response(ai_response, brand_name):
+    """
+    Utilise Gemini (Flash) pour analyser sa propre réponse (Juge).
+    """
+    judge_prompt = f"""
+    Tu es un auditeur SEO. Analyse le texte ci-dessous.
+    Marque recherchée : "{brand_name}"
+    
+    Texte à analyser : "{ai_response}"
+    
+    Réponds UNIQUEMENT au format JSON strict sans Markdown :
+    {{
+        "mentioned": true/false,
+        "sentiment": "Positif/Neutre/Négatif",
+        "context": "Court résumé de ce qui est dit sur la marque (max 10 mots)"
+    }}
+    """
+    try:
+        model = genai.GenerativeModel('gemini-1.5-flash')
+        # On demande au modèle de sortir du JSON
+        result = model.generate_content(judge_prompt, generation_config={"response_mime_type": "application/json"})
+        return json.loads(result.text)
+    except Exception as e:
+        return {"mentioned": False, "sentiment": "Erreur", "context": str(e)}
+
+def get_gemini_response(prompt, api_key):
+    """
+    Simule la requête de l'utilisateur final.
+    """
+    genai.configure(api_key=api_key)
+    model = genai.GenerativeModel('gemini-1.5-flash')
+    try:
+        response = model.generate_content(prompt)
+        return response.text
+    except Exception as e:
+        return f"Erreur API: {e}"
+
+# --- INTERFACE STREAMLIT ---
+
+# 1. SIDEBAR (Configuration)
+with st.sidebar:
+    st.header("⚙️ Configuration")
+    api_key = st.text_input("Clé API Google (Gemini)", type="password", help="Récupérez votre clé sur aistudio.google.com")
+    brand_name = st.text_input("Nom de votre Marque", value="MaMarque")
+    st.info("Version Gratuite : Le script ajoute une pause de 4s entre chaque requête pour respecter les quotas.")
+
+# 2. HEADER PRINCIPAL
+st.title("🕵️ GEO Tracker : Visibilité IA")
+st.markdown("Ce tool interroge Gemini sur vos mots-clés et vérifie si votre marque est citée.")
+
+# 3. INPUTS
+col1, col2 = st.columns([2, 1])
+with col1:
+    user_prompts = st.text_area(
+        "Entrez vos prompts / mots-clés (un par ligne)", 
+        height=200, 
+        placeholder="Exemple:\nMeilleures chaussures de running\nComparatif logiciel CRM\nQuelle marque choisir pour..."
+    )
+
+# 4. LOGIQUE D'EXECUTION
+if st.button("Lancer l'Analyse 🚀", type="primary"):
+    if not api_key:
+        st.error("Veuillez entrer une clé API dans la barre latérale.")
+    elif not user_prompts:
+        st.warning("Veuillez entrer au moins un prompt.")
+    else:
+        # Préparation
+        prompts_list = [p.strip() for p in user_prompts.split('\n') if p.strip()]
+        results = []
+        progress_bar = st.progress(0)
+        status_text = st.empty()
+        
+        # Boucle d'analyse
+        for i, prompt in enumerate(prompts_list):
+            status_text.text(f"Analyse en cours ({i+1}/{len(prompts_list)}) : {prompt}...")
+            
+            # A. L'IA répond à la question (Simulation Utilisateur)
+            ai_answer = get_gemini_response(prompt, api_key)
+            
+            # B. L'IA analyse la réponse (Juge)
+            analysis = analyze_response(ai_answer, brand_name)
+            
+            # Stockage des données
+            results.append({
+                "Prompt": prompt,
+                "Présence": "✅ OUI" if analysis['mentioned'] else "❌ NON",
+                "Sentiment": analysis.get('sentiment', 'N/A'),
+                "Contexte": analysis.get('context', ''),
+                "Réponse Complète": ai_answer
+            })
+            
+            # Gestion du quota gratuit (pause de sécurité)
+            time.sleep(4) 
+            progress_bar.progress((i + 1) / len(prompts_list))
+
+        status_text.text("Analyse terminée !")
+        
+        # 5. AFFICHAGE DES RÉSULTATS
+        df = pd.DataFrame(results)
+        
+        # Métriques Clés
+        st.divider()
+        total = len(df)
+        mentions = df[df["Présence"] == "✅ OUI"].shape[0]
+        percent = (mentions / total) * 100 if total > 0 else 0
+        
+        m1, m2, m3 = st.columns(3)
+        m1.metric("Prompts Analysés", total)
+        m2.metric("Mentions de la marque", mentions)
+        m3.metric("Part de Voix (Visibilité)", f"{percent:.1f}%")
+        
+        # Tableau détaillé
+        st.subheader("Détails par Prompt")
+        st.dataframe(
+            df, 
+            column_config={
+                "Présence": st.column_config.TextColumn(
+                    "Présence",
+                    help="La marque est-elle citée ?",
+                    width="medium"
+                ),
+                "Sentiment": st.column_config.TextColumn(
+                    "Sentiment",
+                    width="small"
+                ),
+            },
+            use_container_width=True
+        )
+        
+        # Export CSV
+        csv = df.to_csv(index=False).encode('utf-8')
+        st.download_button(
+            "📥 Télécharger le rapport (CSV)",
+            csv,
+            "geo_report.csv",
+            "text/csv",
+            key='download-csv'
+        )
