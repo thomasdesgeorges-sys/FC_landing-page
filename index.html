@@ -1,1033 +1,454 @@
 <!DOCTYPE html>
 <html lang="fr" class="scroll-smooth">
-
 <head>
-    <!-- Google Tag Manager -->
-    <script>(function (w, d, s, l, i) {
-            w[l] = w[l] || []; w[l].push({
-                'gtm.start':
-                    new Date().getTime(), event: 'gtm.js'
-            }); var f = d.getElementsByTagName(s)[0],
-                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
-                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
-        })(window, document, 'script', 'dataLayer', 'GTM-KCP76SB');</script>
-    <!-- End Google Tag Manager -->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Foodchéri - Le Frigo Connecté</title>
-    <meta name="description" content="La cantine 2.0 qui attend vos collaborateurs. Disponible 24/7, 100% Frais.">
-    <link rel="icon" type="image/png" href="assets/img/logo_fc_black.png">
-
-    <!-- Preload LCP Image for Performance -->
-    <link rel="preload" as="image"
-        href="https://images.unsplash.com/photo-1604328698692-f76ea9498e76?q=80&w=2070&auto=format&fit=crop">
-
-    <!-- Preconnect to CDNs -->
-    <link rel="preconnect" href="https://cdn.tailwindcss.com">
-    <link rel="preconnect" href="https://unpkg.com">
-    <link rel="preconnect" href="https://images.unsplash.com">
-
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio"></script>
-
-    <!-- Icons (Lucide) -->
-    <script defer src="https://unpkg.com/lucide@0.263.1/dist/umd/lucide.min.js"></script>
-
-    <!-- Tailwind Config -->
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        brand: {
-                            black: '#2F2B2B', // Le Noir (Soft Black)
-                            white: '#ffffff',
-                            cream: '#FAF5C7', // Le Jaune
-                            beige: '#F5F1EA', // Le Beige
-                            terra: '#7A3B00', // Le Terracotta (Dark Brown)
-                            brown: '#4A3B32', // Old Brown
-                            green: '#415f5b',
-                        }
-                    },
-                    fontFamily: {
-                        heading: ['"LTC Globe Gothic"', 'sans-serif'],
-                        subheading: ['"Roc Grotesk"', 'sans-serif'],
-                        body: ['"Open Sans Local"', 'sans-serif'],
-                    },
-                    animation: {
-                        'scroll': 'scroll 40s linear infinite',
-                    },
-                    keyframes: {
-                        scroll: {
-                            '0%': { transform: 'translateX(0)' },
-                            '100%': { transform: 'translateX(-50%)' },
-                        }
-                    }
-                }
-            }
-        }
-    </script>
-
-    <style>
-        @font-face {
-            font-family: 'LTC Globe Gothic';
-            src: url('assets/fonts/LTCGlobeGothic-Bold.otf') format('opentype');
-            font-weight: 700;
-            font-style: normal;
-            font-display: swap;
-        }
-
-        @font-face {
-            font-family: 'Open Sans Local';
-            src: url('assets/fonts/OpenSans-Regular.ttf') format('truetype');
-            font-weight: 400;
-            font-style: normal;
-            font-display: swap;
-        }
-
-        @font-face {
-            font-family: 'Open Sans Local';
-            src: url('assets/fonts/OpenSans-Bold.ttf') format('truetype');
-            font-weight: 700;
-            font-style: normal;
-            font-display: swap;
-        }
-
-        @font-face {
-            font-family: 'Open Sans Local';
-            src: url('assets/fonts/OpenSans-ExtraBold.ttf') format('truetype');
-            font-weight: 800;
-            font-style: normal;
-            font-display: swap;
-        }
-
-        @font-face {
-            font-family: 'Roc Grotesk';
-            src: url('assets/fonts/RocGrotesk-Regular.otf') format('opentype');
-            font-weight: 400;
-            font-style: normal;
-            font-display: swap;
-        }
-
-        @font-face {
-            font-family: 'Roc Grotesk';
-            src: url('assets/fonts/RocGrotesk-Medium.otf') format('opentype');
-            font-weight: 500;
-            font-style: normal;
-            font-display: swap;
-        }
-
-        .font-roc-medium {
-            font-family: '"Roc Grotesk"', sans-serif;
-            font-weight: 500;
-        }
-
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
-        }
-
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .form-input {
-            background-color: #f9fafb;
-            border: 1px solid #e5e5e5;
-            transition: all 0.3s;
-        }
-
-        .form-input:focus {
-            outline: none;
-            border-color: #7A3B00;
-            background-color: #ffffff;
-            box-shadow: 0 0 0 4px rgba(122, 59, 0, 0.1);
-        }
-
-        /* Hide scrollbar for gallery */
-        .no-scrollbar::-webkit-scrollbar {
-            display: none;
-        }
-
-        .no-scrollbar {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-        }
-    </style>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-KCP76SB');</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Foodchéri - Le Frigo Connecté</title>
+<meta name="description" content="La cantine 2.0 qui attend vos collaborateurs. Disponible 24/7, 100% Frais.">
+<link rel="icon" type="image/png" href="assets/img/logo_fc_black.png">
+<link rel="preconnect" href="https://images.unsplash.com">
+<link rel="preload" as="image" href="https://images.unsplash.com/photo-1604328698692-f76ea9498e76?q=80&w=1400&auto=format&fit=crop">
+<link rel="preload" as="font" type="font/woff2" href="assets/fonts/LTCGlobeGothic-Bold.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="assets/fonts/RocGrotesk-Medium.woff2" crossorigin>
+<link rel="stylesheet" href="assets/css/style.min.css">
+<style>
+.form-input{background-color:#f9fafb;border:1px solid #e5e5e5;transition:all .3s}
+.form-input:focus{outline:none;border-color:#7A3B00;background-color:#fff;box-shadow:0 0 0 4px rgba(122,59,0,.1)}
+</style>
 </head>
+<body class="bg-brand-white text-brand-black font-body antialiased overflow-x-hidden">
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KCP76SB" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
-<body
-    class="bg-brand-white text-brand-black font-body antialiased overflow-x-hidden selection:bg-brand-terra selection:text-white">
-    <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KCP76SB" height="0" width="0"
-            style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
+<nav class="fixed w-full z-50 transition-all duration-300 bg-white/95 backdrop-blur-sm border-b border-gray-100 py-3 md:py-4 rounded-b-2xl" id="navbar">
+  <div class="container mx-auto px-4 md:px-6 flex justify-between items-center">
+    <div class="flex items-center">
+      <img src="assets/img/FC_Logotype_FoodCheri_black_mot.svg" alt="Foodchéri" class="h-10 md:h-14 w-auto object-contain">
+    </div>
+    <div class="hidden lg:flex gap-8 items-center font-subheading font-medium text-sm text-brand-black">
+      <a href="#how" class="hover:text-brand-terra transition-colors">Comment ça marche ?</a>
+      <a href="#menu" class="hover:text-brand-terra transition-colors">Le Menu</a>
+      <a href="#rh" class="hover:text-brand-terra transition-colors">Avantages RH</a>
+    </div>
+    <a href="#contact" class="px-4 py-2 md:px-6 md:py-2 bg-brand-black text-white hover:bg-brand-terra transition-all duration-300 font-subheading font-bold text-[10px] md:text-xs tracking-widest rounded-2xl">Découvrir gratuitement</a>
+  </div>
+</nav>
 
-    <!-- Navbar -->
-    <nav class="fixed w-full z-50 transition-all duration-300 bg-white/95 backdrop-blur-sm border-b border-gray-100 py-3 md:py-4 rounded-b-2xl"
-        id="navbar">
-        <div class="container mx-auto px-4 md:px-6 flex justify-between items-center">
-            <div class="flex items-center">
-                <img src="assets/img/FC_Logotype_FoodCheri_black_mot.svg" alt="Foodchéri"
-                    class="h-10 md:h-14 w-auto object-contain">
+<section class="relative min-h-screen pt-32 pb-16 lg:pt-48 lg:pb-24 flex items-center overflow-hidden" id="hero">
+  <div class="absolute inset-0 z-0">
+    <img
+      src="https://images.unsplash.com/photo-1604328698692-f76ea9498e76?q=80&w=1400&auto=format&fit=crop"
+      srcset="https://images.unsplash.com/photo-1604328698692-f76ea9498e76?q=80&w=800&auto=format&fit=crop 800w, https://images.unsplash.com/photo-1604328698692-f76ea9498e76?q=80&w=1400&auto=format&fit=crop 1400w"
+      sizes="100vw"
+      alt="Ambiance Bureau" class="w-full h-full object-cover" width="1400" height="900">
+  </div>
+  <div class="absolute inset-0 bg-brand-cream/90 z-10 backdrop-blur-[2px]"></div>
+  <div class="container mx-auto px-4 md:px-6 h-full relative z-20">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center h-full">
+      <div class="lg:col-span-5 text-center lg:text-left">
+        <h1 class="font-heading text-3xl md:text-5xl lg:text-6xl leading-[1.1] text-brand-black mb-6 lg:mb-8">L'engagement a bon goût. <br><span class="text-brand-terra">Votre frigo connecté aussi.</span></h1>
+        <ul class="space-y-4 mx-auto lg:mx-0 font-roc-medium text-lg text-brand-black/80">
+          <li class="flex items-start gap-4 justify-center lg:justify-start text-left">
+            <div class="w-6 h-6 mt-0.5 rounded border-2 border-brand-terra flex items-center justify-center shrink-0">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-brand-terra" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
             </div>
-            <div class="hidden lg:flex gap-8 items-center font-subheading font-medium text-sm text-brand-black">
-                <a href="#how" class="hover:text-brand-terra transition-colors">Comment ça marche ?</a>
-                <a href="#menu" class="hover:text-brand-terra transition-colors">Le Menu</a>
-                <a href="#rh" class="hover:text-brand-terra transition-colors">Avantages RH</a>
+            <span>des plats frais et variés, cuisinés par nos chef.fes</span>
+          </li>
+          <li class="flex items-start gap-4 justify-center lg:justify-start text-left">
+            <div class="w-6 h-6 mt-0.5 rounded border-2 border-brand-terra flex items-center justify-center shrink-0">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-brand-terra" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
             </div>
-            <a href="#contact"
-                class="px-4 py-2 md:px-6 md:py-2 bg-brand-black text-white hover:bg-brand-terra transition-all duration-300 font-subheading font-bold text-[10px] md:text-xs tracking-widest rounded-2xl">
-                Découvrir gratuitement
-            </a>
+            <span>une carte renouvelée chaque semaine avec 6 plats et 2 desserts</span>
+          </li>
+          <li class="flex items-start gap-4 justify-center lg:justify-start text-left">
+            <div class="w-6 h-6 mt-0.5 rounded border-2 border-brand-terra flex items-center justify-center shrink-0">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-brand-terra" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </div>
+            <span>la solution la plus adaptée pour les petits espaces</span>
+          </li>
+          <li class="flex items-start gap-4 justify-center lg:justify-start text-left">
+            <div class="w-6 h-6 mt-0.5 rounded border-2 border-brand-terra flex items-center justify-center shrink-0">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-brand-terra" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </div>
+            <span>disponibilité 24/24, 7j/7 pour toutes vos équipes</span>
+          </li>
+        </ul>
+        <div class="mt-8 flex flex-col md:flex-row items-center justify-center lg:justify-start gap-4">
+          <div class="flex -space-x-3">
+            <img loading="lazy" width="40" height="40" class="w-10 h-10 rounded-full border-2 border-brand-cream object-cover" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=100&h=100" alt="User 1">
+            <img loading="lazy" width="40" height="40" class="w-10 h-10 rounded-full border-2 border-brand-cream object-cover" src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=100&h=100" alt="User 2">
+            <img loading="lazy" width="40" height="40" class="w-10 h-10 rounded-full border-2 border-brand-cream object-cover" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=100&h=100" alt="User 3">
+            <img loading="lazy" width="40" height="40" class="w-10 h-10 rounded-full border-2 border-brand-cream object-cover" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&h=100" alt="User 4">
+          </div>
+          <div class="text-center lg:text-left flex flex-col justify-center h-10">
+            <div class="flex items-center justify-center lg:justify-start gap-0.5 mb-0.5">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3 fill-brand-terra text-brand-terra" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3 fill-brand-terra text-brand-terra" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3 fill-brand-terra text-brand-terra" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3 fill-brand-terra text-brand-terra" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3 fill-brand-terra text-brand-terra" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+            </div>
+            <p class="font-roc-medium text-xs text-brand-black/80 leading-none">Rejoignez <strong class="text-brand-terra">2000+</strong> collaborateurs conquis.</p>
+          </div>
         </div>
-    </nav>
-
-    <!-- 1. Hero Section -->
-    <section class="relative min-h-screen pt-32 pb-16 lg:pt-48 lg:pb-24 flex items-center overflow-hidden" id="hero">
-
-        <!-- Background Image -->
-        <div class="absolute inset-0 z-0">
-            <img src="https://images.unsplash.com/photo-1604328698692-f76ea9498e76?q=80&w=2070&auto=format&fit=crop"
-                alt="Ambiance Bureau" class="w-full h-full object-cover">
-        </div>
-
-        <!-- Cream Overlay (90% Opacity) -->
-        <div class="absolute inset-0 bg-brand-cream/90 z-10 backdrop-blur-[2px]"></div>
-
-        <div class="container mx-auto px-4 md:px-6 h-full relative z-20">
-            <!-- Grid Layout to prevent overlapping -->
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center h-full">
-
-                <!-- Left: Text Content (5 cols) -->
-                <div class="lg:col-span-5 text-center lg:text-left">
-                    <h1
-                        class="font-heading text-3xl md:text-5xl lg:text-6xl leading-[1.1] text-brand-black mb-6 lg:mb-8">
-                        L'engagement a bon goût. <br>
-                        <span class="text-brand-terra">Votre frigo connecté aussi.</span>
-                    </h1>
-
-                    <!-- List with Checkboxes -->
-                    <ul class="space-y-4 mx-auto lg:mx-0 font-roc-medium text-lg text-brand-black/80">
-                        <li class="flex items-start gap-4 justify-center lg:justify-start text-left">
-                            <div
-                                class="w-6 h-6 mt-0.5 rounded border-2 border-brand-terra flex items-center justify-center shrink-0">
-                                <i data-lucide="check" class="w-4 h-4 text-brand-terra" stroke-width="3"></i>
-                            </div>
-                            <span>des plats frais et variés, cuisinés par nos chef.fes</span>
-                        </li>
-                        <li class="flex items-start gap-4 justify-center lg:justify-start text-left">
-                            <div
-                                class="w-6 h-6 mt-0.5 rounded border-2 border-brand-terra flex items-center justify-center shrink-0">
-                                <i data-lucide="check" class="w-4 h-4 text-brand-terra" stroke-width="3"></i>
-                            </div>
-                            <span>une carte renouvelée chaque semaine avec 6 plats et 2 desserts</span>
-                        </li>
-                        <li class="flex items-start gap-4 justify-center lg:justify-start text-left">
-                            <div
-                                class="w-6 h-6 mt-0.5 rounded border-2 border-brand-terra flex items-center justify-center shrink-0">
-                                <i data-lucide="check" class="w-4 h-4 text-brand-terra" stroke-width="3"></i>
-                            </div>
-                            <span>la solution la plus adaptée pour les petits espaces</span>
-                        </li>
-                        <li class="flex items-start gap-4 justify-center lg:justify-start text-left">
-                            <div
-                                class="w-6 h-6 mt-0.5 rounded border-2 border-brand-terra flex items-center justify-center shrink-0">
-                                <i data-lucide="check" class="w-4 h-4 text-brand-terra" stroke-width="3"></i>
-                            </div>
-                            <span>disponibilité 24/24, 7j/7 pour toutes vos équipes</span>
-                        </li>
-                    </ul>
-
-                    <!-- Social Proof -->
-                    <div class="mt-8 flex flex-col md:flex-row items-center justify-center lg:justify-start gap-4">
-                        <div class="flex -space-x-3">
-                            <img loading="lazy" width="40" height="40"
-                                class="w-10 h-10 rounded-full border-2 border-brand-cream object-cover"
-                                src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=100&h=100"
-                                alt="User 1">
-                            <img loading="lazy" width="40" height="40"
-                                class="w-10 h-10 rounded-full border-2 border-brand-cream object-cover"
-                                src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=100&h=100"
-                                alt="User 2">
-                            <img loading="lazy" width="40" height="40"
-                                class="w-10 h-10 rounded-full border-2 border-brand-cream object-cover"
-                                src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=100&h=100"
-                                alt="User 3">
-                            <img loading="lazy" width="40" height="40"
-                                class="w-10 h-10 rounded-full border-2 border-brand-cream object-cover"
-                                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&h=100"
-                                alt="User 4">
-                        </div>
-                        <div class="text-center lg:text-left flex flex-col justify-center h-10">
-                            <div class="flex items-center justify-center lg:justify-start gap-0.5 mb-0.5">
-                                <i data-lucide="star" class="w-3 h-3 fill-brand-terra text-brand-terra"></i>
-                                <i data-lucide="star" class="w-3 h-3 fill-brand-terra text-brand-terra"></i>
-                                <i data-lucide="star" class="w-3 h-3 fill-brand-terra text-brand-terra"></i>
-                                <i data-lucide="star" class="w-3 h-3 fill-brand-terra text-brand-terra"></i>
-                                <i data-lucide="star" class="w-3 h-3 fill-brand-terra text-brand-terra"></i>
-                            </div>
-                            <p class="font-roc-medium text-xs text-brand-black/80 leading-none">
-                                Rejoignez <strong class="text-brand-terra">2000+</strong> collaborateurs conquis.
-                            </p>
-                        </div>
-                    </div>
+      </div>
+      <div class="hidden lg:block lg:col-span-1"></div>
+      <div class="lg:col-span-6 w-full" id="contact">
+        <div class="bg-white p-6 lg:p-8 rounded-2xl shadow-2xl relative border-4 border-white">
+          <div class="mb-6 md:mb-6 text-center">
+            <h3 class="font-subheading font-bold text-xl lg:text-2xl mb-2">Un expert vous recontacte dans la journée</h3>
+            <p class="text-gray-500 font-subheading text-xs lg:text-sm leading-relaxed">Remplissez ce formulaire pour recevoir votre étude personnalisée.</p>
+          </div>
+          <form class="space-y-4" id="contact-form" name="contact-site" method="POST" action="/success" data-netlify="true">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label for="nom" class="block text-[10px] font-bold uppercase tracking-widest text-brand-terra mb-1">Nom</label>
+                <input type="text" id="nom" name="nom" placeholder="Dupont" required class="w-full py-3 px-5 rounded-2xl form-input font-subheading text-sm bg-gray-50 border-gray-200 placeholder-gray-400">
+              </div>
+              <div>
+                <label for="prenom" class="block text-[10px] font-bold uppercase tracking-widest text-brand-terra mb-1">Prénom</label>
+                <input type="text" id="prenom" name="prenom" placeholder="Jean" required class="w-full py-3 px-5 rounded-2xl form-input font-subheading text-sm bg-gray-50 border-gray-200 placeholder-gray-400">
+              </div>
+            </div>
+            <div>
+              <label for="email-input" class="block text-[10px] font-bold uppercase tracking-widest text-brand-terra mb-1">Email Pro</label>
+              <input type="email" id="email-input" name="email" placeholder="jean@entreprise.com" required class="w-full py-3 px-5 rounded-2xl form-input font-subheading text-sm bg-gray-50 border-gray-200 placeholder-gray-400">
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label for="phone-input" class="block text-[10px] font-bold uppercase tracking-widest text-brand-terra mb-1">Téléphone</label>
+                <input type="tel" id="phone-input" name="telephone" placeholder="06..." required class="w-full py-3 px-5 rounded-2xl form-input font-subheading text-sm bg-gray-50 border-gray-200 placeholder-gray-400">
+              </div>
+              <div>
+                <label for="codepostal" class="block text-[10px] font-bold uppercase tracking-widest text-brand-terra mb-1">Code Postal</label>
+                <input type="text" id="codepostal" name="codepostal" placeholder="75000" required class="w-full py-3 px-5 rounded-2xl form-input font-subheading text-sm bg-gray-50 border-gray-200 placeholder-gray-400">
+              </div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label for="entreprise" class="block text-[10px] font-bold uppercase tracking-widest text-brand-terra mb-1">Entreprise</label>
+                <input type="text" id="entreprise" name="entreprise" placeholder="Société..." required class="w-full py-3 px-5 rounded-2xl form-input font-subheading text-sm bg-gray-50 border-gray-200 placeholder-gray-400">
+              </div>
+              <div>
+                <label for="nombre_employes" class="block text-[10px] font-bold uppercase tracking-widest text-brand-terra mb-1">Nombre d'employés</label>
+                <select id="nombre_employes" name="nombre_employes" required class="w-full py-3 px-5 rounded-2xl form-input font-subheading text-sm bg-gray-50 border-gray-200 text-gray-700">
+                  <option value="" disabled selected>Sélectionnez...</option>
+                  <option value="1">1</option>
+                  <option value="2-10">2-10</option>
+                  <option value="11-50">11-50</option>
+                  <option value="51-100">51-100</option>
+                  <option value="101-200">101-200</option>
+                  <option value="201-500">201-500</option>
+                  <option value="501-1000">501-1000</option>
+                  <option value="1001-5000">1001-5000</option>
+                  <option value="5001+">5001+</option>
+                </select>
+              </div>
+            </div>
+            <div id="success-message" class="hidden">
+              <div class="bg-brand-cream border-2 border-brand-terra rounded-2xl p-4 text-center">
+                <div class="flex justify-center mb-3">
+                  <div class="w-8 h-8 border-2 border-brand-terra rounded flex items-center justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-brand-terra" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  </div>
                 </div>
-
-                <!-- Spacer (1 col) -->
-                <div class="hidden lg:block lg:col-span-1"></div>
-
-                <!-- Right: Form (6 cols) -->
-                <div class="lg:col-span-6 w-full" id="contact">
-                    <div class="bg-white p-6 lg:p-8 rounded-2xl shadow-2xl relative border-4 border-white">
-                        <div class="mb-6 md:mb-6 text-center">
-                            <h3 class="font-subheading font-bold text-xl lg:text-2xl mb-2">Un expert vous
-                                recontacte dans
-                                la journée</h3>
-                            <p class="text-gray-500 font-subheading text-xs lg:text-sm leading-relaxed">Remplissez ce
-                                formulaire pour recevoir votre étude personnalisée.</p>
-                        </div>
-
-                        <form class="space-y-4" id="contact-form" name="contact-site" method="POST" action="/success"
-                            data-netlify="true">
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                <div>
-                                    <label for="nom"
-                                        class="block text-[10px] font-bold uppercase tracking-widest text-brand-terra mb-1">Nom</label>
-                                    <input type="text" id="nom" name="nom" placeholder="Dupont" required
-                                        class="w-full py-3 px-5 rounded-2xl form-input font-subheading text-sm bg-gray-50 border-gray-200 placeholder-gray-400">
-                                </div>
-                                <div>
-                                    <label for="prenom"
-                                        class="block text-[10px] font-bold uppercase tracking-widest text-brand-terra mb-1">Prénom</label>
-                                    <input type="text" id="prenom" name="prenom" placeholder="Jean" required
-                                        class="w-full py-3 px-5 rounded-2xl form-input font-subheading text-sm bg-gray-50 border-gray-200 placeholder-gray-400">
-                                </div>
-                            </div>
-                            <div>
-                                <label for="email-input"
-                                    class="block text-[10px] font-bold uppercase tracking-widest text-brand-terra mb-1">Email
-                                    Pro</label>
-                                <div class="relative">
-                                    <input type="email" id="email-input" name="email" placeholder="jean@entreprise.com"
-                                        required
-                                        class="w-full py-3 px-5 rounded-2xl form-input font-subheading text-sm bg-gray-50 border-gray-200 placeholder-gray-400 transition-colors duration-300">
-                                </div>
-                            </div>
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                <div>
-                                    <label for="phone-input"
-                                        class="block text-[10px] font-bold uppercase tracking-widest text-brand-terra mb-1">Téléphone</label>
-                                    <div class="relative">
-                                        <input type="tel" id="phone-input" name="telephone" placeholder="06..." required
-                                            class="w-full py-3 px-5 rounded-2xl form-input font-subheading text-sm bg-gray-50 border-gray-200 placeholder-gray-400 transition-colors duration-300">
-                                    </div>
-                                </div>
-                                <div>
-                                    <label for="codepostal"
-                                        class="block text-[10px] font-bold uppercase tracking-widest text-brand-terra mb-1">Code
-                                        Postal</label>
-                                    <input type="text" id="codepostal" name="codepostal" placeholder="75000" required
-                                        class="w-full py-3 px-5 rounded-2xl form-input font-subheading text-sm bg-gray-50 border-gray-200 placeholder-gray-400">
-                                </div>
-                            </div>
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                <div>
-                                    <label for="entreprise"
-                                        class="block text-[10px] font-bold uppercase tracking-widest text-brand-terra mb-1">Entreprise</label>
-                                    <input type="text" id="entreprise" name="entreprise" placeholder="Société..."
-                                        required
-                                        class="w-full py-3 px-5 rounded-2xl form-input font-subheading text-sm bg-gray-50 border-gray-200 placeholder-gray-400">
-                                </div>
-                                <div>
-                                    <label for="nombre_employes"
-                                        class="block text-[10px] font-bold uppercase tracking-widest text-brand-terra mb-1">Nombre
-                                        d'employés</label>
-                                    <select id="nombre_employes" name="nombre_employes" required
-                                        class="w-full py-3 px-5 rounded-2xl form-input font-subheading text-sm bg-gray-50 border-gray-200 text-gray-700">
-                                        <option value="" disabled selected>Sélectionnez...</option>
-                                        <option value="1">1</option>
-                                        <option value="2-10">2-10</option>
-                                        <option value="11-50">11-50</option>
-                                        <option value="51-100">51-100</option>
-                                        <option value="101-200">101-200</option>
-                                        <option value="201-500">201-500</option>
-                                        <option value="501-1000">501-1000</option>
-                                        <option value="1001-5000">1001-5000</option>
-                                        <option value="5001+">5001+</option>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <!-- Success Message (Hidden by default) -->
-                            <div id="success-message" class="hidden">
-                                <div class="bg-brand-cream border-2 border-brand-terra rounded-2xl p-4 text-center">
-                                    <div class="flex justify-center mb-3">
-                                        <div
-                                            class="w-8 h-8 border-2 border-brand-terra rounded flex items-center justify-center">
-                                            <i data-lucide="check" class="w-5 h-5 text-brand-terra"
-                                                stroke-width="3"></i>
-                                        </div>
-                                    </div>
-                                    <h4 class="font-subheading font-bold text-lg text-brand-black mb-2">Merci !</h4>
-                                    <p class="font-subheading text-sm text-gray-600">Votre demande a bien été
-                                        reçue.<br>Un expert vous recontacte dans la journée.</p>
-                                </div>
-                            </div>
-
-                            <button type="submit" id="submit-btn"
-                                class="w-full py-3.5 bg-brand-terra text-white font-subheading font-bold text-lg tracking-widest hover:bg-brand-brown transition-colors duration-300 mt-6 rounded-2xl shadow-xl shadow-brand-terra/20 hover:shadow-2xl hover:-translate-y-1 transform">
-                                Découvrir gratuitement
-                            </button>
-                        </form>
-                    </div>
-                </div>
+                <h4 class="font-subheading font-bold text-lg text-brand-black mb-2">Merci !</h4>
+                <p class="font-subheading text-sm text-gray-600">Votre demande a bien été reçue.<br>Un expert vous recontacte dans la journée.</p>
+              </div>
             </div>
+            <button type="submit" id="submit-btn" class="w-full py-3.5 bg-brand-terra text-white font-subheading font-bold text-lg tracking-widest hover:bg-brand-brown transition-colors duration-300 mt-6 rounded-2xl shadow-xl shadow-brand-terra/20 hover:shadow-2xl hover:-translate-y-1 transform">Découvrir gratuitement</button>
+          </form>
         </div>
-    </section>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <!-- 2. Social Proof (Infinite Scroll) -->
-    <section class="py-10 bg-white border-b border-gray-100 overflow-hidden">
-        <div class="flex w-max animate-scroll">
-            <!-- Logos Set 1 -->
-            <div class="flex items-center px-10 gap-16 opacity-60 grayscale">
-                <span class="text-xl font-heading font-bold text-gray-400">TECHCORP</span>
-                <span class="text-xl font-heading font-bold text-gray-400">STARTUP.IO</span>
-                <span class="text-xl font-heading font-bold text-gray-400">BANQUE POP</span>
-                <span class="text-xl font-heading font-bold text-gray-400">AGENCY</span>
-                <span class="text-xl font-heading font-bold text-gray-400">MEDIA GROUP</span>
-                <span class="text-xl font-heading font-bold text-gray-400">CONSULTING</span>
+<section class="py-10 bg-white border-b border-gray-100 overflow-hidden">
+  <div class="flex w-max animate-scroll">
+    <div class="flex items-center px-10 gap-16 opacity-60 grayscale">
+      <span class="text-xl font-heading font-bold text-gray-400">TECHCORP</span>
+      <span class="text-xl font-heading font-bold text-gray-400">STARTUP.IO</span>
+      <span class="text-xl font-heading font-bold text-gray-400">BANQUE POP</span>
+      <span class="text-xl font-heading font-bold text-gray-400">AGENCY</span>
+      <span class="text-xl font-heading font-bold text-gray-400">MEDIA GROUP</span>
+      <span class="text-xl font-heading font-bold text-gray-400">CONSULTING</span>
+    </div>
+    <div class="flex items-center px-10 gap-16 opacity-60 grayscale">
+      <span class="text-xl font-heading font-bold text-gray-400">TECHCORP</span>
+      <span class="text-xl font-heading font-bold text-gray-400">STARTUP.IO</span>
+      <span class="text-xl font-heading font-bold text-gray-400">BANQUE POP</span>
+      <span class="text-xl font-heading font-bold text-gray-400">AGENCY</span>
+      <span class="text-xl font-heading font-bold text-gray-400">MEDIA GROUP</span>
+      <span class="text-xl font-heading font-bold text-gray-400">CONSULTING</span>
+    </div>
+    <div class="flex items-center px-10 gap-16 opacity-60 grayscale">
+      <span class="text-xl font-heading font-bold text-gray-400">TECHCORP</span>
+      <span class="text-xl font-heading font-bold text-gray-400">STARTUP.IO</span>
+      <span class="text-xl font-heading font-bold text-gray-400">BANQUE POP</span>
+      <span class="text-xl font-heading font-bold text-gray-400">AGENCY</span>
+      <span class="text-xl font-heading font-bold text-gray-400">MEDIA GROUP</span>
+      <span class="text-xl font-heading font-bold text-gray-400">CONSULTING</span>
+    </div>
+  </div>
+</section>
+
+<section id="how" class="py-24 bg-brand-white reveal">
+  <div class="container mx-auto px-4 md:px-6">
+    <div class="grid lg:grid-cols-2 gap-16">
+      <div class="hidden lg:block">
+        <div class="sticky top-32 text-center lg:text-left">
+          <h2 class="font-heading text-2xl md:text-3xl lg:text-4xl mb-6 leading-none text-brand-black">Vos équipes savourent, <br><span class="text-brand-terra">FoodChéri s'occupe du reste.</span></h2>
+          <p class="font-roc-medium text-xl text-gray-500 mb-8 leading-relaxed max-w-md">De la cuisine de nos chef.fes au réapprovisionnement régulier et précis, FoodChéri s'occupe de tout. Fraîcheur garantie, frigo toujours plein, et vos équipes profitent en toute autonomie.</p>
+          <div class="lg:col-span-7 relative h-[500px] lg:h-[700px] rounded-2xl overflow-hidden shadow-2xl">
+            <img loading="lazy" src="assets/img/frigo_connecte.webp" alt="Le Frigo Connecté Foodchéri" class="w-full h-full object-cover transform hover:scale-105 transition-transform duration-700" width="800" height="1000">
+            <div class="absolute bottom-6 left-6 right-6 bg-white/90 backdrop-blur-sm p-4 rounded-xl shadow-lg border border-white/20">
+              <div class="flex items-center gap-3">
+                <div class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
+                <span class="text-xs font-bold uppercase tracking-widest text-brand-black">En ligne • 3°C</span>
+              </div>
             </div>
-            <!-- Logos Set 2 -->
-            <div class="flex items-center px-10 gap-16 opacity-60 grayscale">
-                <span class="text-xl font-heading font-bold text-gray-400">TECHCORP</span>
-                <span class="text-xl font-heading font-bold text-gray-400">STARTUP.IO</span>
-                <span class="text-xl font-heading font-bold text-gray-400">BANQUE POP</span>
-                <span class="text-xl font-heading font-bold text-gray-400">AGENCY</span>
-                <span class="text-xl font-heading font-bold text-gray-400">MEDIA GROUP</span>
-                <span class="text-xl font-heading font-bold text-gray-400">CONSULTING</span>
-            </div>
-            <!-- Logos Set 3 -->
-            <div class="flex items-center px-10 gap-16 opacity-60 grayscale">
-                <span class="text-xl font-heading font-bold text-gray-400">TECHCORP</span>
-                <span class="text-xl font-heading font-bold text-gray-400">STARTUP.IO</span>
-                <span class="text-xl font-heading font-bold text-gray-400">BANQUE POP</span>
-                <span class="text-xl font-heading font-bold text-gray-400">AGENCY</span>
-                <span class="text-xl font-heading font-bold text-gray-400">MEDIA GROUP</span>
-                <span class="text-xl font-heading font-bold text-gray-400">CONSULTING</span>
-            </div>
+          </div>
         </div>
-    </section>
-
-    <!-- 3. How It Works (Sticky Layout - Light Version) -->
-    <section id="how" class="py-24 bg-brand-white reveal">
-        <div class="container mx-auto px-4 md:px-6">
-            <div class="grid lg:grid-cols-2 gap-16">
-
-                <!-- Left Column (Sticky) -->
-                <div class="hidden lg:block">
-                    <div class="sticky top-32 text-center lg:text-left">
-                        <h2 class="font-heading text-2xl md:text-3xl lg:text-4xl mb-6 leading-none text-brand-black">
-                            Vos équipes savourent, <br>
-                            <span class="text-brand-terra">FoodChéri s’occupe du reste.</span>
-                        </h2>
-                        <p class="font-roc-medium text-xl text-gray-500 mb-8 leading-relaxed max-w-md">
-                            De la cuisine de nos chef.fes au réapprovisionnement régulier et précis, FoodChéri s’occupe
-                            de tout. Fraîcheur garantie, frigo toujours plein, et vos équipes profitent en toute
-                            autonomie.
-                        </p>
-
-                        <!-- Photo Frigo -->
-                        <div
-                            class="lg:col-span-7 relative h-[500px] lg:h-[700px] rounded-2xl overflow-hidden shadow-2xl">
-                            <img loading="lazy" src="assets/img/frigo_connecte.png" alt="Le Frigo Connecté Foodchéri"
-                                class="w-full h-full object-cover transform hover:scale-105 transition-transform duration-700">
-                            <div
-                                class="absolute bottom-6 left-6 right-6 bg-white/90 backdrop-blur-sm p-4 rounded-xl shadow-lg border border-white/20">
-                                <div class="flex items-center gap-3">
-                                    <div class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
-                                    <span class="text-xs font-bold uppercase tracking-widest text-brand-black">En ligne
-                                        • 3°C</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Right Column (Timeline) -->
-                <div class="space-y-16 lg:border-l-2 lg:border-gray-100 lg:pl-12">
-                    <!-- Mobile Header -->
-                    <div class="lg:hidden mb-12 text-center">
-                        <h2 class="font-heading text-2xl md:text-2xl mb-4 leading-none text-brand-black">
-                            Vos équipes savourent, <span class="text-brand-terra">FoodChéri s’occupe du reste.</span>
-                        </h2>
-                        <p class="font-roc-medium text-lg text-gray-500">
-                            De la cuisine de nos chef.fes au réapprovisionnement régulier et précis, FoodChéri s’occupe
-                            de tout. Fraîcheur garantie, frigo toujours plein, et vos équipes profitent en toute
-                            autonomie.
-                        </p>
-                    </div>
-
-                    <!-- Items Timeline -->
-                    <div class="flex gap-6 group">
-                        <div
-                            class="w-14 h-14 bg-brand-cream text-brand-black rounded-2xl flex items-center justify-center shrink-0 shadow-sm group-hover:bg-brand-terra group-hover:text-white transition-colors duration-500">
-                            <i data-lucide="chef-hat" class="w-7 h-7"></i>
-                        </div>
-                        <div>
-                            <span
-                                class="text-xs font-bold uppercase tracking-widest text-brand-terra mb-2 block">06h30</span>
-                            <h3 class="font-heading text-lg lg:text-2xl mb-3 text-brand-black">Derrière l’écran, nos
-                                chef.fes s'activent…</h3>
-                            <p class="text-gray-600 leading-relaxed">Tout commence dans nos cuisines : nos chef.fes
-                                sélectionnent les produits frais, imaginent des recettes de saison et préparent
-                                l'intégralité de vos plats. Notre obsession : une fraîcheur absolue qui arrive
-                                directement dans votre frigo connecté.</p>
-                        </div>
-                    </div>
-
-                    <div class="flex gap-6 group">
-                        <div
-                            class="w-14 h-14 bg-brand-cream text-brand-black rounded-2xl flex items-center justify-center shrink-0 shadow-sm group-hover:bg-brand-terra group-hover:text-white transition-colors duration-500">
-                            <i data-lucide="truck" class="w-7 h-7"></i>
-                        </div>
-                        <div>
-                            <span
-                                class="text-xs font-bold uppercase tracking-widest text-brand-terra mb-2 block">10h30</span>
-                            <h3 class="font-heading text-lg lg:text-2xl mb-3 text-brand-black">Le plein de nouveautés 3
-                                fois par semaine</h3>
-                            <p class="text-gray-600 leading-relaxed">Nos équipes assurent un réapprovisionnement
-                                ultra-précis de votre frigo connecté. C'est la garantie d'une rotation constante des
-                                plats pour une carte toujours renouvelée. (Mais si vous voulez reprendre deux fois le
-                                même plat, on ne juge pas !)</p>
-                        </div>
-                    </div>
-
-                    <div class="flex gap-6 group">
-                        <div
-                            class="w-14 h-14 bg-brand-cream text-brand-black rounded-2xl flex items-center justify-center shrink-0 shadow-sm group-hover:bg-brand-terra group-hover:text-white transition-colors duration-500">
-                            <i data-lucide="smartphone" class="w-7 h-7"></i>
-                        </div>
-                        <div>
-                            <span
-                                class="text-xs font-bold uppercase tracking-widest text-brand-terra mb-2 block">12h00</span>
-                            <h3 class="font-heading text-lg lg:text-2xl mb-3 text-brand-black">Le déverrouillage
-                                instantané</h3>
-                            <p class="text-gray-600 leading-relaxed">Le collaborateur badge, la porte s'ouvre. Il
-                                choisit son plat (et son dessert !). Nos étagères intelligentes font le reste : elles
-                                pèsent, identifient et valident le paiement à la fermeture. C’est fluide, c’est simple.
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="flex gap-6 group">
-                        <div
-                            class="w-14 h-14 bg-brand-cream text-brand-black rounded-2xl flex items-center justify-center shrink-0 shadow-sm group-hover:bg-brand-terra group-hover:text-white transition-colors duration-500">
-                            <i data-lucide="utensils" class="w-7 h-7"></i>
-                        </div>
-                        <div>
-                            <span
-                                class="text-xs font-bold uppercase tracking-widest text-brand-terra mb-2 block">12h02</span>
-                            <h3 class="font-heading text-lg lg:text-xl mb-3 text-brand-black">Vos collaborateurs
-                                savourent</h3>
-                            <p class="text-gray-600 leading-relaxed">Plus de file d'attente sous la pluie, ni de repas
-                                de substitution. Simplement un repas équilibré et de qualité, préparé par nos chef.fes,
-                                à partager entre collègues ou en solo pour une pause déconnexion.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+      </div>
+      <div class="space-y-16 lg:border-l-2 lg:border-gray-100 lg:pl-12">
+        <div class="lg:hidden mb-12 text-center">
+          <h2 class="font-heading text-2xl md:text-2xl mb-4 leading-none text-brand-black">Vos équipes savourent, <span class="text-brand-terra">FoodChéri s'occupe du reste.</span></h2>
+          <p class="font-roc-medium text-lg text-gray-500">De la cuisine de nos chef.fes au réapprovisionnement régulier et précis, FoodChéri s'occupe de tout. Fraîcheur garantie, frigo toujours plein, et vos équipes profitent en toute autonomie.</p>
         </div>
-    </section>
-
-    <!-- 4. The Menu (Infinite Scroll) -->
-    <section id="menu" class="py-24 bg-brand-cream overflow-hidden">
-        <div class="container mx-auto px-4 md:px-6 mb-12 text-center">
-            <h2 class="font-heading text-2xl md:text-3xl lg:text-4xl mb-4 text-brand-black">Une carte de chef.fes qui
-                fait du bien, <br>sans compromis.</h2>
-            <p class="font-subheading text-brand-terra uppercase tracking-widest">Plus de 2000 recettes variées</p>
+        <div class="flex gap-6 group">
+          <div class="w-14 h-14 bg-brand-cream text-brand-black rounded-2xl flex items-center justify-center shrink-0 shadow-sm group-hover:bg-brand-terra group-hover:text-white transition-colors duration-500">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 13.87A4 4 0 0 1 7.41 6a5.11 5.11 0 0 1 1.05-1.54 5 5 0 0 1 7.08 0A5.11 5.11 0 0 1 16.59 6 4 4 0 0 1 18 13.87V21H6Z"></path><line x1="6" y1="17" x2="18" y2="17"></line><line x1="6" y1="21" x2="18" y2="21"></line></svg>
+          </div>
+          <div>
+            <span class="text-xs font-bold uppercase tracking-widest text-brand-terra mb-2 block">06h30</span>
+            <h3 class="font-heading text-lg lg:text-2xl mb-3 text-brand-black">Derrière l'écran, nos chef.fes s'activent…</h3>
+            <p class="text-gray-600 leading-relaxed">Tout commence dans nos cuisines : nos chef.fes sélectionnent les produits frais, imaginent des recettes de saison et préparent l'intégralité de vos plats. Notre obsession : une fraîcheur absolue qui arrive directement dans votre frigo connecté.</p>
+          </div>
         </div>
-
-        <div class="relative w-full">
-            <div class="flex w-max animate-scroll hover:[animation-play-state:paused]">
-                <!-- Cards Set 1 -->
-                <div class="flex gap-6 px-3">
-                    <!-- Card 1 -->
-                    <div
-                        class="w-[300px] shrink-0 bg-white rounded-2xl p-4 shadow-lg hover:-translate-y-2 transition-transform duration-300">
-                        <div class="h-48 overflow-hidden rounded-2xl mb-4 bg-gray-100 relative">
-                            <img loading="lazy" src="assets/img/menu_selection/aiguillettes-vegetales.jpg"
-                                class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-700"
-                                alt="Aiguillettes">
-                            <span
-                                class="absolute top-2 right-2 bg-white px-3 py-1 text-[10px] font-bold uppercase tracking-widest rounded-full text-brand-black">Végé</span>
-                        </div>
-                        <h3 class="font-heading text-base mb-1 text-brand-black">Aiguillettes Végétales</h3>
-                        <p class="text-xs text-gray-500">Tomates braisées & pommes de terre</p>
-                    </div>
-                    <!-- Card 2 -->
-                    <div
-                        class="w-[300px] shrink-0 bg-white rounded-2xl p-4 shadow-lg hover:-translate-y-2 transition-transform duration-300">
-                        <div class="h-48 overflow-hidden rounded-xl mb-4 bg-gray-100 relative">
-                            <img loading="lazy" src="assets/img/menu_selection/pink-bowl.jpg"
-                                class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-700"
-                                alt="Pink Bowl">
-                            <span
-                                class="absolute top-2 right-2 bg-white px-3 py-1 text-[10px] font-bold uppercase tracking-widest rounded-full text-brand-black">Healthy</span>
-                        </div>
-                        <h3 class="font-heading text-base mb-1 text-brand-black">Pink Bowl</h3>
-                        <p class="text-xs text-gray-500">Explosion de couleurs & vitamines</p>
-                    </div>
-                    <!-- Card 3 -->
-                    <div
-                        class="w-[300px] shrink-0 bg-white rounded-2xl p-4 shadow-lg hover:-translate-y-2 transition-transform duration-300">
-                        <div class="h-48 overflow-hidden rounded-xl mb-4 bg-gray-100 relative">
-                            <img loading="lazy" src="assets/img/menu_selection/linguine-saumon.jpg"
-                                class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-700"
-                                alt="Linguine">
-                            <span
-                                class="absolute top-2 right-2 bg-white px-3 py-1 text-[10px] font-bold uppercase tracking-widest rounded-full text-brand-black">Mer</span>
-                        </div>
-                        <h3 class="font-heading text-base mb-1 text-brand-black">Linguine Saumon</h3>
-                        <p class="text-xs text-gray-500">Épinards frais & crème onctueuse</p>
-                    </div>
-                    <!-- Card 4 -->
-                    <div
-                        class="w-[300px] shrink-0 bg-white rounded-2xl p-4 shadow-lg hover:-translate-y-2 transition-transform duration-300">
-                        <div class="h-48 overflow-hidden rounded-xl mb-4 bg-gray-100 relative">
-                            <img loading="lazy" src="assets/img/menu_selection/porc-ananas.jpg"
-                                class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-700"
-                                alt="Porc Ananas">
-                            <span
-                                class="absolute top-2 right-2 bg-white px-3 py-1 text-[10px] font-bold uppercase tracking-widest rounded-full text-brand-black">Monde</span>
-                        </div>
-                        <h3 class="font-heading text-base mb-1 text-brand-black">Porc à l'Ananas</h3>
-                        <p class="text-xs text-gray-500">Sucré-salé & riz parfumé</p>
-                    </div>
-                    <!-- Card 5 -->
-                    <div
-                        class="w-[300px] shrink-0 bg-white rounded-2xl p-4 shadow-lg hover:-translate-y-2 transition-transform duration-300">
-                        <div class="h-48 overflow-hidden rounded-xl mb-4 bg-gray-100 relative">
-                            <img loading="lazy" src="assets/img/menu_selection/chili-con-carne.jpg"
-                                class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-700"
-                                alt="Chili">
-                            <span
-                                class="absolute top-2 right-2 bg-white px-3 py-1 text-[10px] font-bold uppercase tracking-widest rounded-full text-brand-black">Monde</span>
-                        </div>
-                        <h3 class="font-heading text-base mb-1 text-brand-black">Chili Con Carne</h3>
-                        <p class="text-xs text-gray-500">Haricots rouges mijotés & épices</p>
-                    </div>
-                    <!-- Card 6 -->
-                    <div
-                        class="w-[300px] shrink-0 bg-white rounded-2xl p-4 shadow-lg hover:-translate-y-2 transition-transform duration-300">
-                        <div class="h-48 overflow-hidden rounded-xl mb-4 bg-gray-100 relative">
-                            <img loading="lazy" src="assets/img/menu_selection/green-curry.jpg"
-                                class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-700"
-                                alt="Curry">
-                            <span
-                                class="absolute top-2 right-2 bg-white px-3 py-1 text-[10px] font-bold uppercase tracking-widest rounded-full text-brand-black">Végé</span>
-                        </div>
-                        <h3 class="font-heading text-base mb-1 text-brand-black">Green Curry Végétal</h3>
-                        <p class="text-xs text-gray-500">Lait de coco, citronnelle & légumes</p>
-                    </div>
-                    <!-- Card 7 -->
-                    <div
-                        class="w-[300px] shrink-0 bg-white rounded-2xl p-4 shadow-lg hover:-translate-y-2 transition-transform duration-300">
-                        <div class="h-48 overflow-hidden rounded-xl mb-4 bg-gray-100 relative">
-                            <img loading="lazy" src="assets/img/menu_selection/mousse-marrons.jpg"
-                                class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-700"
-                                alt="Mousse">
-                            <span
-                                class="absolute top-2 right-2 bg-white px-3 py-1 text-[10px] font-bold uppercase tracking-widest rounded-full text-brand-black">Dessert</span>
-                        </div>
-                        <h3 class="font-heading text-base mb-1 text-brand-black">Mousse Marrons</h3>
-                        <p class="text-xs text-gray-500">La douceur du Mont-Blanc</p>
-                    </div>
-                    <!-- Card 8 -->
-                    <div
-                        class="w-[300px] shrink-0 bg-white rounded-2xl p-4 shadow-lg hover:-translate-y-2 transition-transform duration-300">
-                        <div class="h-48 overflow-hidden rounded-xl mb-4 bg-gray-100 relative">
-                            <img loading="lazy" src="assets/img/menu_selection/poulet-teriyaki.jpg"
-                                class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-700"
-                                alt="Teriyaki">
-                            <span
-                                class="absolute top-2 right-2 bg-white px-3 py-1 text-[10px] font-bold uppercase tracking-widest rounded-full text-brand-black">Monde</span>
-                        </div>
-                        <h3 class="font-heading text-base mb-1 text-brand-black">Poulet Teriyaki</h3>
-                        <p class="text-xs text-gray-500">Sauce soja caramélisée & riz sauté</p>
-                    </div>
-                    <!-- Card 9 -->
-                    <div
-                        class="w-[300px] shrink-0 bg-white rounded-2xl p-4 shadow-lg hover:-translate-y-2 transition-transform duration-300">
-                        <div class="h-48 overflow-hidden rounded-xl mb-4 bg-gray-100 relative">
-                            <img loading="lazy" src="assets/img/menu_selection/salade-quinoa.jpg"
-                                class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-700"
-                                alt="Salade">
-                            <span
-                                class="absolute top-2 right-2 bg-white px-3 py-1 text-[10px] font-bold uppercase tracking-widest rounded-full text-brand-black">Healthy</span>
-                        </div>
-                        <h3 class="font-heading text-base mb-1 text-brand-black">Salade Quinoa Coco</h3>
-                        <p class="text-xs text-gray-500">Poulet mariné & fraîcheur exotique</p>
-                    </div>
-                    <!-- Card 10 -->
-                    <div
-                        class="w-[300px] shrink-0 bg-white rounded-2xl p-4 shadow-lg hover:-translate-y-2 transition-transform duration-300">
-                        <div class="h-48 overflow-hidden rounded-xl mb-4 bg-gray-100 relative">
-                            <img loading="lazy" src="assets/img/menu_selection/risotto-potimarron.jpg"
-                                class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-700"
-                                alt="Risotto">
-                            <span
-                                class="absolute top-2 right-2 bg-white px-3 py-1 text-[10px] font-bold uppercase tracking-widest rounded-full text-brand-black">Végé</span>
-                        </div>
-                        <h3 class="font-heading text-base mb-1 text-brand-black">Risotto Potimarron</h3>
-                        <p class="text-xs text-gray-500">Champignons des bois & crémeux végétal</p>
-                    </div>
-                </div>
-
-                <!-- Cards Set 2 (Duplicate) -->
-                <div class="flex gap-6 px-3">
-                    <!-- Card 1 -->
-                    <div
-                        class="w-[300px] shrink-0 bg-white rounded-2xl p-4 shadow-lg hover:-translate-y-2 transition-transform duration-300">
-                        <div class="h-48 overflow-hidden rounded-xl mb-4 bg-gray-100 relative">
-                            <img loading="lazy" src="assets/img/menu_selection/aiguillettes-vegetales.jpg"
-                                class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-700"
-                                alt="Aiguillettes">
-                            <span
-                                class="absolute top-2 right-2 bg-white px-3 py-1 text-[10px] font-bold uppercase tracking-widest rounded-full text-brand-black">Végé</span>
-                        </div>
-                        <h3 class="font-heading text-xl mb-1 text-brand-black">Aiguillettes Végétales</h3>
-                        <p class="text-xs text-gray-500">Tomates braisées & pommes de terre</p>
-                    </div>
-                    <!-- Card 2 -->
-                    <div
-                        class="w-[300px] shrink-0 bg-white rounded-2xl p-4 shadow-lg hover:-translate-y-2 transition-transform duration-300">
-                        <div class="h-48 overflow-hidden rounded-xl mb-4 bg-gray-100 relative">
-                            <img loading="lazy" src="assets/img/menu_selection/pink-bowl.jpg"
-                                class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-700"
-                                alt="Pink Bowl">
-                            <span
-                                class="absolute top-2 right-2 bg-white px-3 py-1 text-[10px] font-bold uppercase tracking-widest rounded-full text-brand-black">Healthy</span>
-                        </div>
-                        <h3 class="font-heading text-xl mb-1 text-brand-black">Pink Bowl</h3>
-                        <p class="text-xs text-gray-500">Explosion de couleurs & vitamines</p>
-                    </div>
-                    <!-- Card 3 -->
-                    <div
-                        class="w-[300px] shrink-0 bg-white rounded-2xl p-4 shadow-lg hover:-translate-y-2 transition-transform duration-300">
-                        <div class="h-48 overflow-hidden rounded-xl mb-4 bg-gray-100 relative">
-                            <img loading="lazy" src="assets/img/menu_selection/linguine-saumon.jpg"
-                                class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-700"
-                                alt="Linguine">
-                            <span
-                                class="absolute top-2 right-2 bg-white px-3 py-1 text-[10px] font-bold uppercase tracking-widest rounded-full text-brand-black">Mer</span>
-                        </div>
-                        <h3 class="font-heading text-xl mb-1 text-brand-black">Linguine Saumon</h3>
-                        <p class="text-xs text-gray-500">Épinards frais & crème onctueuse</p>
-                    </div>
-                    <!-- Card 4 -->
-                    <div
-                        class="w-[300px] shrink-0 bg-white rounded-2xl p-4 shadow-lg hover:-translate-y-2 transition-transform duration-300">
-                        <div class="h-48 overflow-hidden rounded-xl mb-4 bg-gray-100 relative">
-                            <img loading="lazy" src="assets/img/menu_selection/porc-ananas.jpg"
-                                class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-700"
-                                alt="Porc Ananas">
-                            <span
-                                class="absolute top-2 right-2 bg-white px-3 py-1 text-[10px] font-bold uppercase tracking-widest rounded-full text-brand-black">Monde</span>
-                        </div>
-                        <h3 class="font-heading text-xl mb-1 text-brand-black">Porc à l'Ananas</h3>
-                        <p class="text-xs text-gray-500">Sucré-salé & riz parfumé</p>
-                    </div>
-                    <!-- Card 5 -->
-                    <div
-                        class="w-[300px] shrink-0 bg-white rounded-2xl p-4 shadow-lg hover:-translate-y-2 transition-transform duration-300">
-                        <div class="h-48 overflow-hidden rounded-xl mb-4 bg-gray-100 relative">
-                            <img loading="lazy" src="assets/img/menu_selection/chili-con-carne.jpg"
-                                class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-700"
-                                alt="Chili">
-                            <span
-                                class="absolute top-2 right-2 bg-white px-3 py-1 text-[10px] font-bold uppercase tracking-widest rounded-full text-brand-black">Monde</span>
-                        </div>
-                        <h3 class="font-heading text-xl mb-1 text-brand-black">Chili Con Carne</h3>
-                        <p class="text-xs text-gray-500">Haricots rouges mijotés & épices</p>
-                    </div>
-                    <!-- Card 6 -->
-                    <div
-                        class="w-[300px] shrink-0 bg-white rounded-2xl p-4 shadow-lg hover:-translate-y-2 transition-transform duration-300">
-                        <div class="h-48 overflow-hidden rounded-xl mb-4 bg-gray-100 relative">
-                            <img loading="lazy" src="assets/img/menu_selection/green-curry.jpg"
-                                class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-700"
-                                alt="Curry">
-                            <span
-                                class="absolute top-2 right-2 bg-white px-3 py-1 text-[10px] font-bold uppercase tracking-widest rounded-full text-brand-black">Végé</span>
-                        </div>
-                        <h3 class="font-heading text-xl mb-1 text-brand-black">Green Curry Végétal</h3>
-                        <p class="text-xs text-gray-500">Lait de coco, citronnelle & légumes</p>
-                    </div>
-                    <!-- Card 7 -->
-                    <div
-                        class="w-[300px] shrink-0 bg-white rounded-2xl p-4 shadow-lg hover:-translate-y-2 transition-transform duration-300">
-                        <div class="h-48 overflow-hidden rounded-xl mb-4 bg-gray-100 relative">
-                            <img loading="lazy" src="assets/img/menu_selection/mousse-marrons.jpg"
-                                class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-700"
-                                alt="Mousse">
-                            <span
-                                class="absolute top-2 right-2 bg-white px-3 py-1 text-[10px] font-bold uppercase tracking-widest rounded-full text-brand-black">Dessert</span>
-                        </div>
-                        <h3 class="font-heading text-xl mb-1 text-brand-black">Mousse Marrons</h3>
-                        <p class="text-xs text-gray-500">La douceur du Mont-Blanc</p>
-                    </div>
-                    <!-- Card 8 -->
-                    <div
-                        class="w-[300px] shrink-0 bg-white rounded-2xl p-4 shadow-lg hover:-translate-y-2 transition-transform duration-300">
-                        <div class="h-48 overflow-hidden rounded-xl mb-4 bg-gray-100 relative">
-                            <img loading="lazy" src="assets/img/menu_selection/poulet-teriyaki.jpg"
-                                class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-700"
-                                alt="Teriyaki">
-                            <span
-                                class="absolute top-2 right-2 bg-white px-3 py-1 text-[10px] font-bold uppercase tracking-widest rounded-full text-brand-black">Monde</span>
-                        </div>
-                        <h3 class="font-heading text-xl mb-1 text-brand-black">Poulet Teriyaki</h3>
-                        <p class="text-xs text-gray-500">Sauce soja caramélisée & riz sauté</p>
-                    </div>
-                    <!-- Card 9 -->
-                    <div
-                        class="w-[300px] shrink-0 bg-white rounded-2xl p-4 shadow-lg hover:-translate-y-2 transition-transform duration-300">
-                        <div class="h-48 overflow-hidden rounded-xl mb-4 bg-gray-100 relative">
-                            <img loading="lazy" src="assets/img/menu_selection/salade-quinoa.jpg"
-                                class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-700"
-                                alt="Salade">
-                            <span
-                                class="absolute top-2 right-2 bg-white px-3 py-1 text-[10px] font-bold uppercase tracking-widest rounded-full text-brand-black">Healthy</span>
-                        </div>
-                        <h3 class="font-heading text-xl uppercase mb-1 text-brand-black">Salade Quinoa Coco</h3>
-                        <p class="text-xs text-gray-500">Poulet mariné & fraîcheur exotique</p>
-                    </div>
-                    <!-- Card 10 -->
-                    <div
-                        class="w-[300px] shrink-0 bg-white rounded-2xl p-4 shadow-lg hover:-translate-y-2 transition-transform duration-300">
-                        <div class="h-48 overflow-hidden rounded-xl mb-4 bg-gray-100 relative">
-                            <img loading="lazy" src="assets/img/menu_selection/risotto-potimarron.jpg"
-                                class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-700"
-                                alt="Risotto">
-                            <span
-                                class="absolute top-2 right-2 bg-white px-3 py-1 text-[10px] font-bold uppercase tracking-widest rounded-full text-brand-black">Végé</span>
-                        </div>
-                        <h3 class="font-heading text-xl uppercase mb-1 text-brand-black">Risotto Potimarron</h3>
-                        <p class="text-xs text-gray-500">Champignons des bois & crémeux végétal</p>
-                    </div>
-                </div>
-            </div>
+        <div class="flex gap-6 group">
+          <div class="w-14 h-14 bg-brand-cream text-brand-black rounded-2xl flex items-center justify-center shrink-0 shadow-sm group-hover:bg-brand-terra group-hover:text-white transition-colors duration-500">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13" rx="2"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
+          </div>
+          <div>
+            <span class="text-xs font-bold uppercase tracking-widest text-brand-terra mb-2 block">10h30</span>
+            <h3 class="font-heading text-lg lg:text-2xl mb-3 text-brand-black">Le plein de nouveautés 3 fois par semaine</h3>
+            <p class="text-gray-600 leading-relaxed">Nos équipes assurent un réapprovisionnement ultra-précis de votre frigo connecté. C'est la garantie d'une rotation constante des plats pour une carte toujours renouvelée. (Mais si vous voulez reprendre deux fois le même plat, on ne juge pas !)</p>
+          </div>
         </div>
-    </section>
-
-    <!-- 5. Benefit / RH Focus -->
-    <section id="rh" class="py-24 bg-brand-white reveal">
-        <div class="container mx-auto px-4 md:px-6">
-            <div class="flex flex-col md:flex-row items-center gap-12 lg:gap-20">
-
-                <!-- Left: Content -->
-                <div class="md:w-1/2 space-y-8 text-center md:text-left">
-                    <h2 class="font-heading text-2xl md:text-3xl lg:text-4xl leading-none text-brand-black">
-                        Avec FoodChéri, vos collaborateurs méritent <br>
-                        <span class="text-brand-terra">un repas à la hauteur de leur engagement.</span>
-                    </h2>
-                    <p class="font-roc-medium text-lg text-gray-500 leading-relaxed border-l-4 border-brand-black pl-6">
-                        Offrez à vos équipes une alimentation saine, savoureuse et durable, source de vitalité et de
-                        bien-être. Nos recettes sont élaborées pour optimiser la concentration et le dynamisme au
-                        travail.
-                    </p>
-
-                    <ul class="space-y-4">
-                        <li class="flex items-start gap-4 text-left">
-                            <div
-                                class="w-6 h-6 mt-1 rounded-full bg-brand-cream flex items-center justify-center shrink-0 text-brand-terra">
-                                <i data-lucide="check" class="w-3.5 h-3.5"></i>
-                            </div>
-                            <span class="font-bold text-sm text-brand-black">amélioration de la QVT (Qualité de Vie au
-                                Travail)</span>
-                        </li>
-                        <li class="flex items-start gap-4 text-left">
-                            <div
-                                class="w-6 h-6 mt-0.5 rounded-full bg-brand-cream flex items-center justify-center shrink-0 text-brand-terra">
-                                <i data-lucide="check" class="w-3.5 h-3.5"></i>
-                            </div>
-                            <span class="font-bold text-sm text-brand-black">renforcement de la cohésion d'équipe en
-                                valorisant la pause-déjeuner</span>
-                        </li>
-                        <li class="flex items-start gap-4 text-left">
-                            <div
-                                class="w-6 h-6 mt-0.5 rounded-full bg-brand-cream flex items-center justify-center shrink-0 text-brand-terra">
-                                <i data-lucide="check" class="w-3.5 h-3.5"></i>
-                            </div>
-                            <span class="font-bold text-sm text-brand-black">un bénéfice bien-être concret au service de
-                                la performance et du plaisir de vos collaborateurs</span>
-                        </li>
-                    </ul>
-
-                    <a href="#contact"
-                        class="inline-block mt-8 px-10 py-4 bg-brand-black text-white font-subheading font-bold text-lg tracking-widest rounded-2xl hover:bg-brand-terra transition-all duration-300 transform hover:-translate-y-1">
-                        Découvrir gratuitement
-                    </a>
-                </div>
-
-                <!-- Right: Lifestyle Photo -->
-                <div class="md:w-1/2 w-full">
-                    <div class="relative p-6 bg-brand-beige rounded-2xl">
-                        <img loading="lazy" src="assets/img/food-repas-assiette.jpg" alt="Happy Colleagues"
-                            class="w-full h-[500px] object-cover rounded-2xl">
-                    </div>
-                </div>
-            </div>
+        <div class="flex gap-6 group">
+          <div class="w-14 h-14 bg-brand-cream text-brand-black rounded-2xl flex items-center justify-center shrink-0 shadow-sm group-hover:bg-brand-terra group-hover:text-white transition-colors duration-500">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>
+          </div>
+          <div>
+            <span class="text-xs font-bold uppercase tracking-widest text-brand-terra mb-2 block">12h00</span>
+            <h3 class="font-heading text-lg lg:text-2xl mb-3 text-brand-black">Le déverrouillage instantané</h3>
+            <p class="text-gray-600 leading-relaxed">Le collaborateur badge, la porte s'ouvre. Il choisit son plat (et son dessert !). Nos étagères intelligentes font le reste : elles pèsent, identifient et valident le paiement à la fermeture. C'est fluide, c'est simple.</p>
+          </div>
         </div>
-    </section>
-
-    <!-- Footer Legal -->
-    <footer class="bg-brand-black text-white py-12 border-t border-gray-800">
-        <div
-            class="container mx-auto px-4 md:px-6 flex flex-col md:flex-row justify-between items-center gap-6 text-center md:text-left">
-            <div class="flex items-center">
-                <img loading="lazy" src="assets/img/FC_Logotype_FoodCheri_blanc_mot.svg" alt="Foodchéri" width="150"
-                    height="40" class="h-8 md:h-10 w-auto object-contain">
-            </div>
-            <div class="text-gray-400 text-sm">
-                &copy; 2026 Foodchéri. Fait avec passion.
-            </div>
-            <div class="flex gap-6">
-                <a href="#" aria-label="Instagram FoodChéri"
-                    class="text-gray-400 hover:text-brand-terra transition-colors"><i data-lucide="instagram"></i></a>
-                <a href="#" aria-label="LinkedIn FoodChéri"
-                    class="text-gray-400 hover:text-brand-terra transition-colors"><i data-lucide="linkedin"></i></a>
-            </div>
+        <div class="flex gap-6 group">
+          <div class="w-14 h-14 bg-brand-cream text-brand-black rounded-2xl flex items-center justify-center shrink-0 shadow-sm group-hover:bg-brand-terra group-hover:text-white transition-colors duration-500">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l19-9-9 19-2-8-8-2z"></path></svg>
+          </div>
+          <div>
+            <span class="text-xs font-bold uppercase tracking-widest text-brand-terra mb-2 block">12h02</span>
+            <h3 class="font-heading text-lg lg:text-xl mb-3 text-brand-black">Vos collaborateurs savourent</h3>
+            <p class="text-gray-600 leading-relaxed">Plus de file d'attente sous la pluie, ni de repas de substitution. Simplement un repas équilibré et de qualité, préparé par nos chef.fes, à partager entre collègues ou en solo pour une pause déconnexion.</p>
+          </div>
         </div>
-    </footer>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            if (typeof lucide !== 'undefined') {
-                lucide.createIcons();
-            }
+<section class="py-14 bg-brand-black">
+  <div class="container mx-auto px-4 md:px-6 flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
+    <h2 class="font-heading text-2xl md:text-3xl lg:text-4xl text-white leading-tight max-w-xl">Prêt à transformer la pause&#8209;déjeuner <span class="text-brand-cream">de vos équipes ?</span></h2>
+    <a href="#contact" class="shrink-0 px-8 py-4 bg-brand-terra text-white font-subheading font-bold text-sm tracking-widest rounded-2xl hover:bg-brand-brown transition-all duration-300 transform hover:-translate-y-1 shadow-lg shadow-brand-terra/20">Découvrir gratuitement</a>
+  </div>
+</section>
 
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('active');
-                    }
-                });
-            }, { threshold: 0.1 });
+<section id="menu" class="py-24 bg-brand-cream overflow-hidden">
+  <div class="container mx-auto px-4 md:px-6 mb-12 text-center">
+    <h2 class="font-heading text-2xl md:text-3xl lg:text-4xl mb-4 text-brand-black">Une carte de chef.fes qui fait du bien, <br>sans compromis.</h2>
+    <p class="font-subheading text-brand-terra uppercase tracking-widest">Plus de 2000 recettes variées</p>
+  </div>
+  <div class="relative w-full">
+    <div class="flex w-max animate-scroll hover:[animation-play-state:paused]" id="menu-track"></div>
+  </div>
+</section>
 
-            document.querySelectorAll('.reveal').forEach(section => {
-                observer.observe(section);
-            });
+<section id="rh" class="py-24 bg-brand-white reveal">
+  <div class="container mx-auto px-4 md:px-6">
+    <div class="flex flex-col md:flex-row items-center gap-12 lg:gap-20">
+      <div class="md:w-1/2 space-y-8 text-center md:text-left">
+        <h2 class="font-heading text-2xl md:text-3xl lg:text-4xl leading-none text-brand-black">Avec FoodChéri, vos collaborateurs méritent <br><span class="text-brand-terra">un repas à la hauteur de leur engagement.</span></h2>
+        <p class="font-roc-medium text-lg text-gray-500 leading-relaxed border-l-4 border-brand-black pl-6">Offrez à vos équipes une alimentation saine, savoureuse et durable, source de vitalité et de bien-être. Nos recettes sont élaborées pour optimiser la concentration et le dynamisme au travail.</p>
+        <ul class="space-y-4">
+          <li class="flex items-start gap-4 text-left">
+            <div class="w-6 h-6 mt-1 rounded-full bg-brand-cream flex items-center justify-center shrink-0 text-brand-terra">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </div>
+            <span class="font-bold text-sm text-brand-black">amélioration de la QVT (Qualité de Vie au Travail)</span>
+          </li>
+          <li class="flex items-start gap-4 text-left">
+            <div class="w-6 h-6 mt-0.5 rounded-full bg-brand-cream flex items-center justify-center shrink-0 text-brand-terra">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </div>
+            <span class="font-bold text-sm text-brand-black">renforcement de la cohésion d'équipe en valorisant la pause-déjeuner</span>
+          </li>
+          <li class="flex items-start gap-4 text-left">
+            <div class="w-6 h-6 mt-0.5 rounded-full bg-brand-cream flex items-center justify-center shrink-0 text-brand-terra">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </div>
+            <span class="font-bold text-sm text-brand-black">un bénéfice bien-être concret au service de la performance et du plaisir de vos collaborateurs</span>
+          </li>
+        </ul>
+        <a href="#contact" class="inline-block mt-8 px-10 py-4 bg-brand-black text-white font-subheading font-bold text-lg tracking-widest rounded-2xl hover:bg-brand-terra transition-all duration-300 transform hover:-translate-y-1">Découvrir gratuitement</a>
+      </div>
+      <div class="md:w-1/2 w-full">
+        <div class="relative p-6 bg-brand-beige rounded-2xl">
+          <img loading="lazy" src="assets/img/food-repas-assiette.webp" alt="Happy Colleagues" class="w-full h-[500px] object-cover rounded-2xl" width="700" height="500">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-            // Validation logic
-            const emailInput = document.getElementById('email-input');
-            const phoneInput = document.getElementById('phone-input');
-            const emailCheck = document.getElementById('email-check');
-            const emailError = document.getElementById('email-error');
-            const phoneCheck = document.getElementById('phone-check');
-            const phoneError = document.getElementById('phone-error');
+<section id="engagement" class="py-24 bg-brand-cream reveal">
+  <div class="container mx-auto px-4 md:px-6">
+    <div class="text-center mb-14">
+      <p class="font-subheading text-brand-terra uppercase tracking-widest text-xs font-bold mb-3">Société à Mission · Groupe Sodexo</p>
+      <h2 class="font-heading text-2xl md:text-3xl lg:text-4xl text-brand-black leading-tight">Bien manger, <span class="text-brand-terra">sans compromis sur la planète.</span></h2>
+      <p class="mt-4 font-subheading text-gray-500 text-sm md:text-base max-w-2xl mx-auto leading-relaxed">FoodChéri est une Société à Mission. Chaque repas livré dans votre frigo connecté est pensé pour minimiser son impact environnemental et maximiser sa valeur nutritionnelle.</p>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+      <div class="bg-white rounded-2xl p-6 shadow-sm border border-white/80 flex flex-col gap-4 hover:-translate-y-1 transition-transform duration-300">
+        <div class="w-11 h-11 bg-brand-black rounded-xl flex items-center justify-center shrink-0">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-brand-cream" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z"></path><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"></path></svg>
+        </div>
+        <div>
+          <p class="font-heading text-3xl text-brand-terra mb-1">-35%</p>
+          <h3 class="font-subheading font-bold text-base text-brand-black mb-1">Anti-gaspillage alimentaire</h3>
+          <p class="text-gray-500 text-sm leading-relaxed">Réapprovisionnement ajusté à la demande réelle, tri et valorisation des invendus. Moins de déchets, plus de sens.</p>
+        </div>
+      </div>
+      <div class="bg-white rounded-2xl p-6 shadow-sm border border-white/80 flex flex-col gap-4 hover:-translate-y-1 transition-transform duration-300">
+        <div class="w-11 h-11 bg-brand-black rounded-xl flex items-center justify-center shrink-0">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-brand-cream" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+        </div>
+        <div>
+          <p class="font-heading text-3xl text-brand-terra mb-1">80%</p>
+          <h3 class="font-subheading font-bold text-base text-brand-black mb-1">Circuits courts &amp; de saison</h3>
+          <p class="text-gray-500 text-sm leading-relaxed">La majorité de nos produits frais proviennent de fournisseurs locaux et de saison, sélectionnés selon des critères qualité stricts.</p>
+        </div>
+      </div>
+      <div class="bg-white rounded-2xl p-6 shadow-sm border border-white/80 flex flex-col gap-4 hover:-translate-y-1 transition-transform duration-300">
+        <div class="w-11 h-11 bg-brand-black rounded-xl flex items-center justify-center shrink-0">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-brand-cream" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path></svg>
+        </div>
+        <div>
+          <p class="font-heading text-3xl text-brand-terra mb-1">100%</p>
+          <h3 class="font-subheading font-bold text-base text-brand-black mb-1">Emballages éco-responsables</h3>
+          <p class="text-gray-500 text-sm leading-relaxed">Contenants recyclables ou compostables sur l'ensemble de notre gamme. Zéro plastique superflu dans nos cuisines.</p>
+        </div>
+      </div>
+      <div class="bg-white rounded-2xl p-6 shadow-sm border border-white/80 flex flex-col gap-4 hover:-translate-y-1 transition-transform duration-300">
+        <div class="w-11 h-11 bg-brand-black rounded-xl flex items-center justify-center shrink-0">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-brand-cream" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"></path></svg>
+        </div>
+        <div>
+          <p class="font-heading text-3xl text-brand-terra mb-1">A→C</p>
+          <h3 class="font-subheading font-bold text-base text-brand-black mb-1">Nutri-Score affiché sur chaque plat</h3>
+          <p class="text-gray-500 text-sm leading-relaxed">Transparence totale sur la valeur nutritionnelle. Vos collaborateurs font des choix éclairés à chaque passage au frigo.</p>
+        </div>
+      </div>
+      <div class="sm:col-span-2 lg:col-span-2 bg-brand-black rounded-2xl p-6 shadow-sm flex flex-col gap-4 hover:-translate-y-1 transition-transform duration-300">
+        <div class="w-11 h-11 bg-brand-terra rounded-xl flex items-center justify-center shrink-0">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+        </div>
+        <div>
+          <p class="font-heading text-3xl text-brand-cream mb-1">+RSE</p>
+          <h3 class="font-subheading font-bold text-base text-white mb-1">Contribution directe à votre bilan RSE</h3>
+          <p class="text-gray-400 text-sm leading-relaxed">Choisir FoodChéri, c'est enrichir votre reporting RSE avec des indicateurs concrets et mesurables : réduction de l'empreinte carbone liée à la restauration d'entreprise, promotion de l'alimentation durable, et amélioration du bien-être des collaborateurs. Un argument fort pour vos Office Managers, DRH et Directions RSE.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-            const validateEmail = (email) => {
-                const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                return re.test(String(email).toLowerCase());
-            };
+<section id="faq" class="py-24 bg-brand-beige reveal">
+  <div class="container mx-auto px-4 md:px-6">
+    <div class="text-center mb-14">
+      <p class="font-subheading text-brand-terra uppercase tracking-widest text-xs font-bold mb-3">Questions fréquentes</p>
+      <h2 class="font-heading text-2xl md:text-3xl lg:text-4xl text-brand-black leading-tight">Tout ce que vous voulez <br class="hidden md:block"><span class="text-brand-terra">savoir sur le frigo connecté.</span></h2>
+    </div>
+    <div class="max-w-3xl mx-auto space-y-4">
+      <div class="faq-item bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+        <button class="faq-trigger w-full flex items-center justify-between gap-4 px-6 py-5 text-left" aria-expanded="false">
+          <span class="font-subheading font-bold text-base md:text-lg text-brand-black">C'est quoi le frigo connecté FoodChéri ?</span>
+          <span class="faq-icon shrink-0 w-8 h-8 rounded-xl bg-brand-cream flex items-center justify-center transition-all duration-300">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-brand-terra" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+          </span>
+        </button>
+        <div class="faq-content overflow-hidden max-h-0 transition-all duration-500 ease-in-out">
+          <p class="px-6 pb-6 text-gray-600 leading-relaxed font-body text-sm md:text-base">Le frigo connecté FoodChéri, c'est un réfrigérateur intelligent installé directement dans vos locaux. Chaque semaine, nos chef·fes préparent une carte renouvelée de 6 plats et 2 desserts à base de produits frais. Le frigo est réapprovisionné 3 fois par semaine pour garantir une fraîcheur optimale et une rotation constante des recettes. Pour se servir, votre collaborateur badge, la porte s'ouvre, il choisit son repas. Les étagères intelligentes identifient automatiquement les produits et valident le paiement à la fermeture. Le tout disponible 24h/24, 7j/7.</p>
+        </div>
+      </div>
+      <div class="faq-item bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+        <button class="faq-trigger w-full flex items-center justify-between gap-4 px-6 py-5 text-left" aria-expanded="false">
+          <span class="font-subheading font-bold text-base md:text-lg text-brand-black">Comment faire pour installer un frigo connecté dans mes locaux ?</span>
+          <span class="faq-icon shrink-0 w-8 h-8 rounded-xl bg-brand-cream flex items-center justify-center transition-all duration-300">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-brand-terra" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+          </span>
+        </button>
+        <div class="faq-content overflow-hidden max-h-0 transition-all duration-500 ease-in-out">
+          <p class="px-6 pb-6 text-gray-600 leading-relaxed font-body text-sm md:text-base">Remplissez le formulaire sur cette page et un expert FoodChéri vous recontacte dans la journée. Il étudie avec vous vos besoins (nombre de collaborateurs, espace disponible, habitudes de consommation) et vous propose une solution sur-mesure. L'installation est rapide et prise en charge intégralement par nos équipes : livraison, mise en service, paramétrage et accompagnement au lancement.</p>
+        </div>
+      </div>
+      <div class="faq-item bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+        <button class="faq-trigger w-full flex items-center justify-between gap-4 px-6 py-5 text-left" aria-expanded="false">
+          <span class="font-subheading font-bold text-base md:text-lg text-brand-black">Êtes-vous disponibles partout en France ?</span>
+          <span class="faq-icon shrink-0 w-8 h-8 rounded-xl bg-brand-cream flex items-center justify-center transition-all duration-300">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-brand-terra" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+          </span>
+        </button>
+        <div class="faq-content overflow-hidden max-h-0 transition-all duration-500 ease-in-out">
+          <p class="px-6 pb-6 text-gray-600 leading-relaxed font-body text-sm md:text-base">Le frigo connecté FoodChéri est actuellement disponible en Île-de-France. Pour les entreprises situées en dehors de l'IDF, nous avons une autre solution : Seazon pour les entreprises, qui permet de proposer des repas de qualité à vos collaborateurs partout en France avec livraison directement sur votre lieu de travail.</p>
+        </div>
+      </div>
+      <div class="faq-item bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+        <button class="faq-trigger w-full flex items-center justify-between gap-4 px-6 py-5 text-left" aria-expanded="false">
+          <span class="font-subheading font-bold text-base md:text-lg text-brand-black">Comment mes collaborateurs peuvent-ils payer leurs repas ?</span>
+          <span class="faq-icon shrink-0 w-8 h-8 rounded-xl bg-brand-cream flex items-center justify-center transition-all duration-300">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-brand-terra" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+          </span>
+        </button>
+        <div class="faq-content overflow-hidden max-h-0 transition-all duration-500 ease-in-out">
+          <p class="px-6 pb-6 text-gray-600 leading-relaxed font-body text-sm md:text-base">Quand votre collaborateur ferme la porte du frigo, les étagères intelligentes identifient les produits sélectionnés et le montant est débité directement. Plusieurs moyens de paiement sont acceptés : carte bancaire, titres-restaurant (Swile, Edenred, Up…) et paiement par téléphone. Vos collaborateurs choisissent le mode qui leur convient le mieux.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-            const validatePhone = (phone) => {
-                const re = /^(?:(?:\+|00)33|0)\s*[1-9](?:[\s.-]*\d{2}){4}$/;
-                return re.test(String(phone));
-            };
+<footer class="bg-brand-black text-white py-12 border-t border-gray-800">
+  <div class="container mx-auto px-4 md:px-6 flex flex-col md:flex-row justify-between items-center gap-6 text-center md:text-left">
+    <div class="flex items-center">
+      <img loading="lazy" src="assets/img/FC_Logotype_FoodCheri_blanc_mot.svg" alt="Foodchéri" width="150" height="40" class="h-8 md:h-10 w-auto object-contain">
+    </div>
+    <div class="text-gray-400 text-sm">&copy; 2026 Foodchéri. Fait avec passion.</div>
+    <div class="flex gap-6">
+      <a href="#" aria-label="Instagram FoodChéri" class="text-gray-400 hover:text-brand-terra transition-colors">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+      </a>
+      <a href="#" aria-label="LinkedIn FoodChéri" class="text-gray-400 hover:text-brand-terra transition-colors">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+      </a>
+    </div>
+  </div>
+</footer>
 
-            if (emailInput) {
-                emailInput.addEventListener('input', function () {
-                    if (this.value === '') {
-                        emailInput.classList.remove('border-red-300', 'bg-red-50', 'text-red-900', 'focus:border-red-500', 'focus:ring-red-500', 'border-green-300', 'bg-green-50', 'text-green-900', 'focus:border-green-500', 'focus:ring-green-500');
-                        emailInput.classList.add('bg-gray-50', 'border-gray-200');
-                        emailInput.setCustomValidity('');
-                    } else if (validateEmail(this.value)) {
-                        emailInput.classList.remove('border-red-300', 'bg-red-50', 'text-red-900', 'focus:border-red-500', 'focus:ring-red-500', 'bg-gray-50', 'border-gray-200');
-                        emailInput.classList.add('border-green-300', 'bg-green-50', 'text-green-900', 'focus:border-green-500', 'focus:ring-green-500');
-                        emailInput.setCustomValidity('');
-                    } else {
-                        emailInput.classList.remove('border-green-300', 'bg-green-50', 'text-green-900', 'focus:border-green-500', 'focus:ring-green-500', 'bg-gray-50', 'border-gray-200');
-                        emailInput.classList.add('border-red-300', 'bg-red-50', 'text-red-900', 'focus:border-red-500', 'focus:ring-red-500');
-                        emailInput.setCustomValidity('Veuillez entrer une adresse e-mail valide.');
-                    }
-                });
-            }
-
-            if (phoneInput) {
-                phoneInput.addEventListener('input', function () {
-                    if (this.value === '') {
-                        phoneInput.classList.remove('border-red-300', 'bg-red-50', 'text-red-900', 'focus:border-red-500', 'focus:ring-red-500', 'border-green-300', 'bg-green-50', 'text-green-900', 'focus:border-green-500', 'focus:ring-green-500');
-                        phoneInput.classList.add('bg-gray-50', 'border-gray-200');
-                        phoneInput.setCustomValidity('');
-                    } else if (validatePhone(this.value)) {
-                        phoneInput.classList.remove('border-red-300', 'bg-red-50', 'text-red-900', 'focus:border-red-500', 'focus:ring-red-500', 'bg-gray-50', 'border-gray-200');
-                        phoneInput.classList.add('border-green-300', 'bg-green-50', 'text-green-900', 'focus:border-green-500', 'focus:ring-green-500');
-                        phoneInput.setCustomValidity('');
-                    } else {
-                        phoneInput.classList.remove('border-green-300', 'bg-green-50', 'text-green-900', 'focus:border-green-500', 'focus:ring-green-500', 'bg-gray-50', 'border-gray-200');
-                        phoneInput.classList.add('border-red-300', 'bg-red-50', 'text-red-900', 'focus:border-red-500', 'focus:ring-red-500');
-                        phoneInput.setCustomValidity('Veuillez entrer un numéro de téléphone valide (10 chiffres).');
-                    }
-                });
-            }
-
-            // Form submission handling
-            const form = document.getElementById('contact-form');
-            const submitBtn = document.getElementById('submit-btn');
-            const successMessage = document.getElementById('success-message');
-
-            if (form) {
-                form.addEventListener('submit', function (e) {
-                    e.preventDefault();
-
-                    // Change button text to loading state
-                    const originalText = submitBtn.innerHTML;
-                    submitBtn.innerHTML = 'Envoi en cours...';
-                    submitBtn.disabled = true;
-
-                    // Prepare form data
-                    const formData = new FormData(form);
-
-                    // Submit to Netlify
-                    fetch('/', {
-                        method: 'POST',
-                        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-                        body: new URLSearchParams(formData).toString()
-                    })
-                        .then(() => {
-                            // Hide form fields
-                            form.querySelectorAll('input, label, button, select, div.grid').forEach(el => {
-                                el.style.display = 'none';
-                            });
-
-                            // Show success message with animation
-                            successMessage.classList.remove('hidden');
-                            successMessage.style.opacity = '0';
-                            setTimeout(() => {
-                                successMessage.style.transition = 'opacity 0.5s ease-in-out';
-                                successMessage.style.opacity = '1';
-                            }, 10);
-
-                            // Re-initialize Lucide icons for the success message
-                            if (typeof lucide !== 'undefined') {
-                                lucide.createIcons();
-                            }
-                        })
-                        .catch((error) => {
-                            // Reset button on error
-                            submitBtn.innerHTML = originalText;
-                            submitBtn.disabled = false;
-                            alert('Une erreur est survenue. Veuillez réessayer.');
-                        });
-                });
-            }
-        });
-    </script>
+<script src="assets/js/main.min.js" defer></script>
 </body>
-
 </html>
